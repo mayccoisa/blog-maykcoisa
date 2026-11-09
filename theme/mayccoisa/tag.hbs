@@ -1,0 +1,26 @@
+{{!< default}}
+<div class="wrap">
+    <header class="archive-head">
+        {{#tag}}
+            <span class="eyebrow">Assunto</span>
+            <h1>{{name}}</h1>
+            {{#if description}}<p class="archive-desc">{{description}}</p>{{/if}}
+        {{/tag}}
+        <span class="section-count">{{plural pagination.total empty="Nenhum artigo publicado" singular="% artigo" plural="% artigos"}}</span>
+    </header>
+
+    {{#if posts}}
+        <div class="editorial">
+            <section class="feed">
+                <div class="grid">
+                    {{#foreach posts}}{{> card}}{{/foreach}}
+                </div>
+                {{> pagination}}
+            </section>
+
+            {{> sidebar}}
+        </div>
+    {{else}}
+        <p class="empty-note">Ainda não há artigos neste assunto. <a href="{{@site.url}}">Voltar ao início</a>.</p>
+    {{/if}}
+</div>

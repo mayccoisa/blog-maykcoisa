@@ -1,0 +1,49 @@
+<aside class="sidebar">
+    <div class="side-search">
+        <span class="side-label">O que você quer descobrir?</span>
+        <button type="button" class="search-box" data-ghost-search aria-label="Buscar no blog">
+            <span class="search-placeholder">Buscar no blog</span>
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M14.95 14.95a1 1 0 0 1 1.41 0l6.34 6.34a1 1 0 0 1-1.41 1.41l-6.34-6.34a1 1 0 0 1 0-1.41Z" fill="currentColor"/>
+                <path d="M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm-9 7a9 9 0 1 1 18 0 9 9 0 0 1-18 0Z" fill="currentColor"/>
+            </svg>
+        </button>
+    </div>
+
+    {{#get "tags" limit="6" order="count.posts desc" include="count.posts" as |assuntos|}}
+        {{#if assuntos}}
+            <section class="side-section" id="assuntos">
+                <h2>{{#if @custom.topics_label}}{{@custom.topics_label}}{{else}}Explore por assunto{{/if}}</h2>
+                {{#foreach assuntos}}
+                    <a class="subject" href="{{url}}">
+                        <span>{{name}}</span>
+                        <span class="subject-arrow" aria-hidden="true">↗</span>
+                    </a>
+                {{/foreach}}
+            </section>
+        {{/if}}
+    {{/get}}
+
+    {{#get "posts" filter="featured:true" limit="3" order="published_at desc" as |leitura|}}
+        {{#if leitura}}
+            <section class="side-section">
+                <span class="eyebrow">Para começar</span>
+                <h2>{{#if @custom.reading_list_label}}{{@custom.reading_list_label}}{{else}}Na lista de leitura{{/if}}</h2>
+                {{#foreach leitura}}
+                    <a class="rank" href="{{url}}">
+                        <span class="rank-num" aria-hidden="true">{{@number}}</span>
+                        <b>{{title}}</b>
+                    </a>
+                {{/foreach}}
+            </section>
+        {{/if}}
+    {{/get}}
+
+    <section class="about" id="sobre">
+        <img class="about-mark" src="{{asset "images/avatar.png"}}" alt="" width="52" height="52" />
+        <h2>Oi, eu sou o Maycon.</h2>
+        <p>Este é o espaço para conectar tecnologia, projetos e a vida que acontece entre uma coisa e outra.</p>
+        <span class="about-note">Pode chegar. A curiosidade é de casa.</span>
+        <a class="about-link" href="{{@site.url}}/sobre/">Conheça o Maycon <span aria-hidden="true">↗</span></a>
+    </section>
+</aside>

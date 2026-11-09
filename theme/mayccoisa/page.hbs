@@ -1,0 +1,29 @@
+{{!< default}}
+{{#post}}
+<article class="post post-page">
+    <div class="post-wrap">
+        <a class="back" href="{{@site.url}}"><span aria-hidden="true">←</span> Voltar ao blog</a>
+
+        {{#if @page.show_title_and_feature_image}}
+            <header class="post-head page-head">
+                {{#match slug "sobre"}}
+                    <img class="about-mark about-mark-lg page-mark" src="{{asset "images/avatar.png"}}" alt="" width="64" height="64" />
+                    <span class="eyebrow">Quem escreve</span>
+                {{/match}}
+                <h1>{{title}}</h1>
+                {{#if custom_excerpt}}<p class="post-dek">{{custom_excerpt}}</p>{{/if}}
+            </header>
+
+            {{#if feature_image}}
+                <figure class="post-cover">
+                    <img src="{{img_url feature_image size='l'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+                </figure>
+            {{/if}}
+        {{/if}}
+
+        <div class="post-content">
+            {{content}}
+        </div>
+    </div>
+</article>
+{{/post}}

@@ -1,0 +1,14 @@
+name: mayccoisa-blog
+services:
+  ghost:
+    image: ghost:6
+    ports:
+      - "127.0.0.1:2368:2368"
+    environment:
+      NODE_ENV: development
+      url: http://localhost:2368
+      database__client: sqlite3
+      database__connection__filename: /var/lib/ghost/content/data/ghost.db
+    volumes:
+      - ./content:/var/lib/ghost/content
+    restart: unless-stopped

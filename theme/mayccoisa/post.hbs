@@ -1,0 +1,77 @@
+{{!< default}}
+{{#post}}
+<article class="post">
+    <div class="post-wrap">
+        <a class="back" href="{{@site.url}}"><span aria-hidden="true">←</span> Voltar ao blog</a>
+
+        <header class="post-head">
+            {{#if primary_tag}}
+                <a class="tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+            {{/if}}
+
+            <h1>{{title}}</h1>
+
+            {{#if custom_excerpt}}
+                <p class="post-dek">{{custom_excerpt}}</p>
+            {{/if}}
+
+            <div class="post-meta">
+                <span>{{primary_author.name}}</span>
+                <span aria-hidden="true">·</span>
+                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="D MMM YYYY" locale="pt-BR"}}</time>
+                <span aria-hidden="true">·</span>
+                <span>{{reading_time minute="1 min de leitura" minutes="% min de leitura"}}</span>
+            </div>
+        </header>
+
+        {{#if feature_image}}
+            <figure class="post-cover">
+                <img
+                    src="{{img_url feature_image size='l'}}"
+                    srcset="{{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 960w, {{img_url feature_image size='xl'}} 1400w"
+                    sizes="(max-width: 900px) 100vw, 900px"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                />
+                {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+            </figure>
+        {{/if}}
+
+        <div class="post-content">
+            {{content}}
+        </div>
+
+        {{#if tags}}
+            <div class="post-tags">
+                <span>Assuntos</span>
+                {{#foreach tags}}<a href="{{url}}">{{name}}</a>{{/foreach}}
+            </div>
+        {{/if}}
+
+        <div class="post-author">
+            {{#if primary_author.profile_image}}
+                <img class="author-avatar" src="{{img_url primary_author.profile_image size='s'}}" alt="{{primary_author.name}}" />
+            {{else}}
+                <img class="about-mark" src="{{asset "images/avatar.png"}}" alt="" width="52" height="52" />
+            {{/if}}
+            <div class="post-author-text">
+                <b>{{primary_author.name}}</b>
+                {{#if primary_author.bio}}<p>{{primary_author.bio}}</p>{{/if}}
+            </div>
+        </div>
+
+        {{#if primary_tag}}
+            {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |relacionados|}}
+                {{#if relacionados}}
+                    <section class="related">
+                        <span class="eyebrow">Continue lendo</span>
+                        <h2>Outras descobertas</h2>
+                        <div class="grid grid-related">
+                            {{#foreach relacionados}}{{> card}}{{/foreach}}
+                        </div>
+                    </section>
+                {{/if}}
+            {{/get}}
+        {{/if}}
+    </div>
+</article>
+{{/post}}

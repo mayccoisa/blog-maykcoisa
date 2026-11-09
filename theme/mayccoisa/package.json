@@ -1,0 +1,50 @@
+{
+    "name": "mayccoisa",
+    "description": "Tema do blog Mayccoisa — tecnologia, lifestyle e tudo mais",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=5.0.0",
+        "node": ">=18.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Maycon Rocha",
+        "email": "mayccoisa@mayccoisa.com.br"
+    },
+    "keywords": [
+        "ghost-theme",
+        "ghost",
+        "blog",
+        "mayccoisa"
+    ],
+    "config": {
+        "posts_per_page": 9,
+        "card_assets": true,
+        "image_sizes": {
+            "s": {
+                "width": 320
+            },
+            "m": {
+                "width": 600
+            },
+            "l": {
+                "width": 960
+            },
+            "xl": {
+                "width": 1400
+            }
+        },
+        "custom": {
+            "topics_label": {
+                "type": "text",
+                "default": "Explore por assunto",
+                "description": "Título do bloco de assuntos na coluna lateral"
+            },
+            "reading_list_label": {
+                "type": "text",
+                "default": "Na lista de leitura",
+                "description": "Título da lista de destaques na coluna lateral"
+            }
+        }
+    }
+}

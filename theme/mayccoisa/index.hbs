@@ -1,0 +1,73 @@
+{{!< default}}
+{{#is "home"}}
+    {{#match pagination.page "=" 1}}
+        <section class="wrap intro">
+            <div class="intro-top">
+                <p class="eyebrow">Um blog para quem é curioso</p>
+                <span class="intro-sign">Por Maycon Rocha · Feito de curiosidade</span>
+            </div>
+            <h1>Tecnologia, vida real. E um pouco de <em>tudo mais.</em></h1>
+        </section>
+    {{/match}}
+{{/is}}
+
+{{#if posts}}
+    <div class="wrap">
+        {{#match pagination.total ">" 1}}
+            {{#foreach posts}}
+                {{#if @first}}
+                    {{> featured}}
+                {{/if}}
+            {{/foreach}}
+        {{/match}}
+
+        <div class="editorial">
+            <section class="feed" id="artigos">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">Direto do blog</span>
+                        <h2>As últimas descobertas</h2>
+                    </div>
+                    <span class="section-count">{{plural pagination.total empty="Nenhum artigo" singular="% artigo" plural="% artigos"}}</span>
+                </div>
+
+                <div class="grid">
+                    {{#match pagination.total ">" 1}}
+                        {{#foreach posts}}
+                            {{#unless @first}}
+                                {{> card}}
+                            {{/unless}}
+                        {{/foreach}}
+                    {{else}}
+                        {{#foreach posts}}
+                            {{> card}}
+                        {{/foreach}}
+                    {{/match}}
+                </div>
+
+                {{> pagination}}
+            </section>
+
+            {{> sidebar}}
+        </div>
+    </div>
+
+    <section class="wrap closing">
+        <span class="eyebrow">Não precisa caber numa caixinha</span>
+        <h2>Uma boa descoberta puxa a próxima.</h2>
+        <a href="#artigos">Encontre sua próxima leitura <span aria-hidden="true">↗</span></a>
+    </section>
+{{else}}
+    <div class="wrap">
+        <div class="editorial">
+            <section class="feed">
+                <section class="empty-state">
+                    <span class="eyebrow">Ainda no rascunho</span>
+                    <h1>Nada publicado por aqui ainda.</h1>
+                    <p>O primeiro artigo está a caminho. Enquanto isso, volte em breve ou acompanhe pelo <a href="{{@site.url}}/rss/">RSS</a>.</p>
+                </section>
+            </section>
+            {{> sidebar}}
+        </div>
+    </div>
+{{/if}}

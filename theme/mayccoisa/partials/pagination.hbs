@@ -1,0 +1,23 @@
+{{#if pagination.pages}}
+    {{#match pagination.pages ">" 1}}
+        <nav class="pager" aria-label="Paginação">
+            {{#if pagination.prev}}
+                <a class="pager-link" href="{{page_url pagination.prev}}" rel="prev">
+                    <span aria-hidden="true">←</span> Mais recentes
+                </a>
+            {{else}}
+                <span class="pager-link is-off"><span aria-hidden="true">←</span> Mais recentes</span>
+            {{/if}}
+
+            <span class="pager-count">Página {{pagination.page}} de {{pagination.pages}}</span>
+
+            {{#if pagination.next}}
+                <a class="pager-link" href="{{page_url pagination.next}}" rel="next">
+                    Mais antigos <span aria-hidden="true">→</span>
+                </a>
+            {{else}}
+                <span class="pager-link is-off">Mais antigos <span aria-hidden="true">→</span></span>
+            {{/if}}
+        </nav>
+    {{/match}}
+{{/if}}

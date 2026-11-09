@@ -1,0 +1,33 @@
+{{!< default}}
+<div class="wrap">
+    <header class="archive-head archive-author">
+        {{#author}}
+            {{#if profile_image}}
+                <img class="author-avatar" src="{{img_url profile_image size='s'}}" alt="{{name}}" />
+            {{else}}
+                <img class="about-mark about-mark-lg" src="{{asset "images/avatar.png"}}" alt="" width="64" height="64" />
+            {{/if}}
+            <div class="archive-author-text">
+                <span class="eyebrow">Quem escreve</span>
+                <h1>{{name}}</h1>
+                {{#if bio}}<p class="archive-desc">{{bio}}</p>{{/if}}
+                <span class="section-count">{{plural ../pagination.total empty="Nenhum artigo publicado" singular="% artigo" plural="% artigos"}}</span>
+            </div>
+        {{/author}}
+    </header>
+
+    {{#if posts}}
+        <div class="editorial">
+            <section class="feed">
+                <div class="grid">
+                    {{#foreach posts}}{{> card}}{{/foreach}}
+                </div>
+                {{> pagination}}
+            </section>
+
+            {{> sidebar}}
+        </div>
+    {{else}}
+        <p class="empty-note">Ainda não há artigos publicados por aqui.</p>
+    {{/if}}
+</div>

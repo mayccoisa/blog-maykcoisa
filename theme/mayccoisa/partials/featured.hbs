@@ -1,0 +1,31 @@
+<section class="featured" aria-label="Leitura em destaque">
+    <div class="feature-art" aria-hidden="true">
+        <div class="window">
+            <div class="window-head">
+                <i></i><i></i><i></i>
+                <span>ideia-em-construcao</span>
+            </div>
+            <div class="code">
+                <span>// começa com uma curiosidade</span><br />
+                <b>const</b> ideia = {<br />
+                &nbsp; vontade: <strong>"tirar do papel"</strong>,<br />
+                &nbsp; ferramenta: <strong>"a que resolve"</strong>,<br />
+                &nbsp; primeiroPasso: <strong>"experimentar"</strong><br />
+                };<br />
+                <b>await</b> construir(ideia);<span class="cursor">▌</span>
+            </div>
+        </div>
+        <span class="art-caption">Menos abas abertas. Mais ideias no mundo.</span>
+    </div>
+
+    <div class="feature-copy">
+        <span class="tag">{{#if primary_tag}}{{primary_tag.name}}{{else}}Em destaque{{/if}} · em destaque</span>
+        <h2><a href="{{url}}">{{title}}</a></h2>
+        <p>{{excerpt characters="115"}}</p>
+        <div class="meta">
+            {{date format="D MMM YYYY" locale="pt-BR"}} <span aria-hidden="true">·</span>
+            {{reading_time minute="1 min de leitura" minutes="% min de leitura"}}
+        </div>
+        <a class="read" href="{{url}}">Ler o artigo <span aria-hidden="true">↗</span></a>
+    </div>
+</section>

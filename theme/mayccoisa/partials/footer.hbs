@@ -1,0 +1,20 @@
+<footer class="site-foot">
+    <div class="wrap foot-bar">
+        <a class="brand brand-foot" href="{{@site.url}}" aria-label="{{@site.title}} — página inicial">
+            {{#if @site.logo}}
+                <img class="brand-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+            {{else}}
+                <img class="brand-mark" src="{{asset "images/marca.png"}}" alt="" width="30" height="30" />
+                <span class="brand-word">{{@site.title}}</span>
+            {{/if}}
+        </a>
+
+        <p class="foot-tagline">{{#if @site.description}}{{@site.description}}{{else}}Tecnologia, lifestyle e tudo mais.{{/if}}</p>
+
+        <div class="foot-meta">
+            <span>© {{date format="YYYY"}} {{@site.title}}</span>
+            <a class="foot-rss" href="{{@site.url}}/sobre/">Sobre</a>
+            <a class="foot-rss" href="{{@site.url}}/rss/">RSS</a>
+        </div>
+    </div>
+</footer>
