@@ -2,11 +2,11 @@
 {{#match modo "destaque"}}
     {{#match destaque "sim"}}
         <article class="featured proj-featured" data-tipo="{{tipo}}" aria-label="Projeto em destaque">
-            {{> "projetos/capa"}}
+            {{#if artigo}}<a class="proj-capa-link" href="{{@site.url}}{{artigo}}" tabindex="-1" aria-hidden="true">{{> "projetos/capa"}}</a>{{else}}{{> "projetos/capa"}}{{/if}}
 
             <div class="feature-copy">
                 <span class="tag">{{tipo_nome}} · em destaque</span>
-                <h2>{{nome}}</h2>
+                <h2>{{#if artigo}}<a class="proj-titulo-link" href="{{@site.url}}{{artigo}}">{{nome}}</a>{{else}}{{nome}}{{/if}}</h2>
                 <p>{{resumo}}</p>
                 <div class="proj-info">
                     {{#if tec1}}<span class="proj-chip">{{tec1}}</span>{{/if}}
@@ -25,10 +25,10 @@
 {{#match modo "grade"}}
     {{#match destaque "!=" "sim"}}
         <article class="proj-card" data-tipo="{{tipo}}">
-            {{> "projetos/capa"}}
+            {{#if artigo}}<a class="proj-capa-link" href="{{@site.url}}{{artigo}}" tabindex="-1" aria-hidden="true">{{> "projetos/capa"}}</a>{{else}}{{> "projetos/capa"}}{{/if}}
             <div class="proj-cover">
                 <span class="proj-type">{{tipo_nome}}</span>
-                <h3>{{nome}}</h3>
+                <h3>{{#if artigo}}<a class="proj-titulo-link" href="{{@site.url}}{{artigo}}">{{nome}}</a>{{else}}{{nome}}{{/if}}</h3>
             </div>
             <div class="proj-body">
                 <p>{{resumo}}</p>
@@ -49,9 +49,9 @@
 {{#match modo "home"}}
     {{#match home "sim"}}
         <article class="proj-mini">
-            {{> "projetos/capa"}}
+            {{#if artigo}}<a class="proj-capa-link" href="{{@site.url}}{{artigo}}" tabindex="-1" aria-hidden="true">{{> "projetos/capa"}}</a>{{else}}{{> "projetos/capa"}}{{/if}}
             <span class="proj-type">{{tipo_nome}}</span>
-            <h3>{{nome}}</h3>
+            <h3>{{#if artigo}}<a class="proj-titulo-link" href="{{@site.url}}{{artigo}}">{{nome}}</a>{{else}}{{nome}}{{/if}}</h3>
             <p>{{resumo}}</p>
             <div class="proj-foot">
                 {{> "projetos/selo"}}
