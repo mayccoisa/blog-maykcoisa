@@ -2420,4 +2420,150 @@ h4 {
     }
 }
 
+/* ------------------------------------------------- imagem em tela cheia -- */
+
+.zoomavel {
+    cursor: zoom-in;
+}
+
+.zoomavel:focus-visible {
+    outline: 3px solid var(--violet);
+    outline-offset: 3px;
+}
+
+.lightbox {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgb(14 10 22 / 0.96);
+    color: #fff;
+}
+
+.lightbox[open] {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) 72px;
+    grid-template-rows: 64px minmax(0, 1fr);
+    grid-template-areas:
+        'topo topo topo'
+        'ant palco prox';
+}
+
+.lightbox::backdrop {
+    background: transparent;
+}
+
+.lightbox-topo {
+    grid-area: topo;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px 0 24px;
+}
+
+.lightbox-contador {
+    font-size: 14px;
+    font-weight: 600;
+    color: #cfc6e0;
+}
+
+.lightbox-fechar,
+.lightbox-seta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.08);
+    color: #fff;
+    cursor: pointer;
+}
+
+.lightbox-fechar:hover,
+.lightbox-seta:hover {
+    background: rgb(255 255 255 / 0.18);
+}
+
+.lightbox-fechar:focus-visible,
+.lightbox-seta:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+.lightbox-seta {
+    align-self: center;
+    justify-self: center;
+}
+
+.lightbox-anterior {
+    grid-area: ant;
+}
+
+.lightbox-proxima {
+    grid-area: prox;
+}
+
+.lightbox-palco {
+    grid-area: palco;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 0;
+    margin: 0;
+    padding-bottom: 16px;
+}
+
+.lightbox-palco img {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.lightbox-palco figcaption {
+    flex: none;
+    max-width: 760px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #cfc6e0;
+}
+
+@media (max-width: 700px) {
+    .lightbox[open] {
+        grid-template-columns: 1fr;
+        grid-template-rows: 56px minmax(0, 1fr) 72px;
+        grid-template-areas:
+            'topo'
+            'palco'
+            'setas';
+    }
+
+    .lightbox-seta {
+        position: fixed;
+        bottom: 12px;
+    }
+
+    .lightbox-anterior {
+        left: calc(50% - 64px);
+    }
+
+    .lightbox-proxima {
+        right: calc(50% - 64px);
+    }
+
+    .lightbox-palco {
+        padding: 0 12px;
+    }
+}
+
 
