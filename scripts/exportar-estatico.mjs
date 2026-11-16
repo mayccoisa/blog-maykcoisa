@@ -6,8 +6,11 @@
  *
  * Variaveis de ambiente (opcionais):
  *   GHOST_URL   origem do Ghost        (padrao http://localhost:2368)
- *   SITE_URL    URL publica do site    (padrao https://mayccoisa.github.io)
- *   BASE_PATH   subpasta do projeto    (padrao /blog-maykcoisa)
+ *   SITE_URL    URL publica do site    (padrao https://blog.maykcoisa.com.br)
+ *   BASE_PATH   subpasta do projeto    (padrao vazio, raiz do dominio)
+ *
+ * Com dominio proprio (fora de github.io) o script grava o arquivo CNAME que o
+ * GitHub Pages usa para manter o dominio personalizado.
  *   SAIDA       pasta de saida         (padrao dist-pages)
  *
  * O script percorre as paginas a partir da home, baixa paginas e assets,
@@ -19,8 +22,8 @@ import { mkdir, readdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 
 const ORIGEM = (process.env.GHOST_URL || 'http://localhost:2368').replace(/\/$/, '');
-const SITE = (process.env.SITE_URL || 'https://mayccoisa.github.io').replace(/\/$/, '');
-const BASE = (process.env.BASE_PATH ?? '/blog-maykcoisa').replace(/\/$/, '');
+const SITE = (process.env.SITE_URL || 'https://blog.maykcoisa.com.br').replace(/\/$/, '');
+const BASE = (process.env.BASE_PATH ?? '').replace(/\/$/, '');
 const SAIDA = resolve(process.env.SAIDA || 'dist-pages');
 
 const EXTENSOES_ASSET = new Set([
@@ -37,7 +40,8 @@ const fila = ['/'];
 const relatorio = { paginas: 0, assets: 0, erros: [] };
 
 const baseDoSite = SITE + BASE;
-const cssExtra = '.nav-search,.side-search{display:none !important}';
+// A busca do tema (assets/js/busca.js) funciona sem servidor; nada a esconder
+const cssExtra = '';
 
 function extensao(caminho) {
     const semQuery = caminho.split('?')[0].split('#')[0];
@@ -269,8 +273,11 @@ async function lerSitemap(url) {
 
 async function main() {
     console.log(`Exportando ${ORIGEM} -> ${SAIDA} (${baseDoSite}/)`);
-    await rm(SAIDA, { recursive: true, force: true });
+    // Limpa a saida mas preserva o .git da branch gh-pages
     await mkdir(SAIDA, { recursive: true });
+    for (const item of await readdir(SAIDA)) {
+        if (item !== '.git') await rm(join(SAIDA, item), { recursive: true, force: true });
+    }
 
     // O sitemap do Ghost e um indice: cada filho lista posts, paginas, assuntos ou autores
     try {
@@ -298,6 +305,8 @@ async function main() {
     await copiarRestante();
 
     await salvar(join(SAIDA, '.nojekyll'), '');
+    const host = new URL(SITE).hostname;
+    if (!BASE && !host.endsWith('github.io')) await salvar(join(SAIDA, 'CNAME'), `${host}\n`);
 
     console.log(`\nPaginas: ${relatorio.paginas}`);
     console.log(`Assets:  ${relatorio.assets}`);

@@ -2,7 +2,7 @@
 
 Codigo-fonte do blog: tema Ghost, scripts locais e documentacao.
 
-O site publicado vive em <https://mayccoisa.github.io/blog-maykcoisa/> e e gerado a
+O site publicado vive em <https://blog.maykcoisa.com.br/> e e gerado a
 partir do Ghost local com `node scripts/exportar-estatico.mjs`.
 
 > O Ghost roda somente na maquina local (Docker + SQLite). GitHub Pages serve
@@ -33,4 +33,4 @@ node scripts/exportar-estatico.mjs
 ```
 
 Gera `dist-pages/` com o site pronto. Depois, envie essa pasta para a branch
-`gh-pages` deste repositorio.
+`gh-pages` deste repositorio. Dominio, DNS e detalhes em [docs/publicacao.md](docs/publicacao.md).

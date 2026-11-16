@@ -30,7 +30,7 @@
     {{/if}}
 
     <div class="feature-copy">
-        <span class="tag">{{#if primary_tag}}{{primary_tag.name}}{{else}}Em destaque{{/if}}</span>
+        <span class="tag">{{#if primary_tag}}{{> "icone-assunto" slug=primary_tag.slug}}{{primary_tag.name}}{{else}}Em destaque{{/if}}</span>
         <h2><a href="{{url}}">{{title}}</a></h2>
         <p>{{excerpt characters="115"}}</p>
         <div class="meta">

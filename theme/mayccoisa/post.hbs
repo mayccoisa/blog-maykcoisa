@@ -5,7 +5,7 @@
 
         <header class="post-head">
             {{#if primary_tag}}
-                <a class="tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+                <a class="tag" href="{{primary_tag.url}}">{{> "icone-assunto" slug=primary_tag.slug}}{{primary_tag.name}}</a>
             {{/if}}
 
             <h1>{{title}}</h1>
