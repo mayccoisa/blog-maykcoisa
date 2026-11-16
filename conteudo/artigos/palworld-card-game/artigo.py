@@ -1,6 +1,6 @@
 ARTIGO = {'titulo': 'Palworld Card Game: aprender um jogo de cartas jogando contra o computador',
- 'resumo': 'Um projeto de estudo em Godot que virou jogo completo: tutorial, 28 duelistas, catálogo com 154 '
-           'cartas, controle do Xbox e versão para Android.',
+ 'resumo': 'Como construí, sem saber desenvolver jogos, um jogo de cartas de fã do Palworld organizando o '
+           'trabalho dos agentes de IA.',
  'assunto': 'tecnologia',
  'status': 'published',
  'publicado': '2026-11-16 10:00:00',
