@@ -4,6 +4,7 @@ Uso:
     python scripts/criar-artigos-projetos.py              # cria os que ainda não existem
     python scripts/criar-artigos-projetos.py --atualizar  # recria os que já existem
     python scripts/criar-artigos-projetos.py --remover    # apaga os artigos daqui
+    python scripts/criar-artigos-projetos.py --atualizar --slug palworld-card-game  # só um
 
 O texto de cada artigo vive em conteudo/artigos/<slug>/artigo.py e as imagens
 na mesma pasta. O script copia as imagens para ghost/content/images/projetos/<slug>/
@@ -241,9 +242,14 @@ def main():
     grupo = parser.add_mutually_exclusive_group()
     grupo.add_argument("--atualizar", action="store_true")
     grupo.add_argument("--remover", action="store_true")
+    parser.add_argument("--slug", help="trata só o artigo com este slug")
     args = parser.parse_args()
 
     artigos = carregar_artigos()
+    if args.slug:
+        artigos = [a for a in artigos if a["slug"] == args.slug]
+        if not artigos:
+            sys.exit(f"Nenhum artigo com slug {args.slug} em {CONTEUDO}")
     conn = abrir()
     autor = id_autor(conn)
     for artigo in artigos:
