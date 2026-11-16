@@ -2188,4 +2188,31 @@ h4 {
     }
 }
 
+/* -------------------------------------------- card de projeto com artigo -- */
+
+.proj-capa-link {
+    display: block;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.proj-capa-link .proj-capa > * {
+    transition: transform 0.25s ease;
+}
+
+.proj-capa-link:hover .proj-capa > * {
+    transform: scale(1.03);
+}
+
+.proj-titulo-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.proj-titulo-link:hover {
+    color: var(--violet);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .nav-search,.side-search{display:none !important}
