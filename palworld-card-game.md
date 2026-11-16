@@ -5,8 +5,8 @@
 # Palworld Card Game: aprender um jogo de cartas jogando contra o computador
 - URL: http://localhost:2368/palworld-card-game/
 - Published: 2026-11-16T10:00:00.000Z
-- Updated: 2026-11-16T16:27:56.000Z
-- Description: Um projeto de estudo em Godot que virou jogo completo: tutorial, 28 duelistas, catálogo com 154 cartas, controle do Xbox e versão para Android.
+- Updated: 2026-11-16T16:32:22.000Z
+- Description: Como construí, sem saber desenvolver jogos, um jogo de cartas de fã do Palworld organizando o trabalho dos agentes de IA.
 - Author: Maycon Rocha
 - Tags: Tecnologia
 
