@@ -5,69 +5,53 @@
 # Palworld Card Game: aprender um jogo de cartas jogando contra o computador
 - URL: http://localhost:2368/palworld-card-game/
 - Published: 2026-11-16T10:00:00.000Z
-- Updated: 2026-11-16T14:40:16.000Z
+- Updated: 2026-11-16T16:27:56.000Z
 - Description: Um projeto de estudo em Godot que virou jogo completo: tutorial, 28 duelistas, catálogo com 154 cartas, controle do Xbox e versão para Android.
 - Author: Maycon Rocha
 - Tags: Tecnologia
 
-O Palworld Card Game nasceu em outubro de 2026 com um objetivo de estudo: entender o Palworld OFFICIAL CARD GAME, o jogo de cartas físico da Bushiroad, jogando partidas no computador. Eu queria ver custos, ataques e combinações acontecendo, com as regras aplicadas na hora e a explicação de cada resultado.
+Palworld foi o jogo que mais joguei neste ano, daqueles que me davam vontade de ligar o PC só para desbravar o mundo e descobrir o que havia de novo. Os monstros, os itens, os biomas e as dungeons me faziam querer continuar naquele universo, e essa vontade também me levou ao jogo de cartas.
 
-Cinco semanas depois, ele está na versão 0.14.0, roda no Windows e no Android e tem um modo para cada momento de quem está aprendendo.
+Como as cartas físicas não estavam ao meu alcance aqui no Brasil, resolvi construir uma versão para jogar contra o computador e aprender as regras na prática. Eu ainda não sabia desenvolver jogos, então parti do que já sabia fazer: montar um bom harness para organizar o trabalho dos agentes de IA e aprender durante a construção.
 
-![Menu inicial com o botão Jogar, o botão Baralhos e um Pal em destaque](http://localhost:2368/content/images/projetos/palworld-card-game/menu.jpg)
+Esse é o Palworld Card Game que construí como fã, um projeto independente, sem ligação com a Pocketpair ou a Bushiroad.
 
-O menu da versão 0.14.0: Jogar, Baralhos e um Pal em destaque que troca sozinho.
+## Aprender as regras jogando
 
-## O que é
+A proposta é montar um baralho e jogar uma partida contra o computador, com o próprio jogo aplicando as regras. O tutorial e o modo de treino ajudam a começar; depois dá para experimentar no duelo livre e voltar ao construtor de baralhos para ajustar as escolhas.
 
-É um jogo digital feito em Godot. Você monta um baralho com as cartas do jogo oficial e enfrenta um bot. O motor aplica as regras sozinho: impede a jogada ilegal e diz o motivo. A interface é em português ou inglês, e o efeito de cada carta pode ser lido nas duas línguas.
+Feito em Godot, o projeto tem português e inglês, versões para PC e Android e suporte a controle.
 
-É um jogo de fã, sem ligação com a Pocketpair ou a Bushiroad. Não tem loja, moeda nem desbloqueio: todas as cartas ficam disponíveis desde o começo.
+## Como organizei o desenvolvimento com IA
 
-## Três jeitos de jogar
+Harness é a estrutura em volta dos agentes de IA: as instruções que eles recebem, a descrição das tarefas, os limites do que podem alterar e a maneira de conferir a entrega. No meu projeto, essa organização começa na pasta do jogo, com o escopo escrito e um plano de implementação que serve de referência para as tarefas.
 
-- Tutorial: uma batalha guiada que passa por todas as fases e mecânicas e termina com a sua vitória.
-- Treino de combate: abre direto uma partida com baralhos prontos, para quem quer jogar sem preparar nada.
-- Duelo Livre: 28 duelistas, entre decks oficiais, campeões de torneio e listas da comunidade, com placar salvo.
+![Projeto Palworld aberto no Game Hub, com tarefas organizadas por etapa e progresso.](http://localhost:2368/content/images/projetos/palworld-card-game/game-hub-tarefas.jpg)
 
-![Tela Escolha como jogar com os cartões Tutorial, Treino de combate e Duelo Livre](http://localhost:2368/content/images/projetos/palworld-card-game/seletor-modos.jpg)
+O quadro do Palworld no Game Hub reúne os pedidos, o andamento da execução e as tarefas que aguardam meu teste.
 
-Todos os modos são contra o bot, na própria máquina.
+No GDD, documento que descreve o jogo, defini o recorte inicial: rodar em Windows, ter partidas contra um bot e usar as cartas disponíveis, com regras automáticas e português, sem uma economia para administrar. Assim, havia um escopo para consultar quando surgissem novas ideias ou problemas.
 
-## A mesa
+![Documento de escopo do Palworld aberto no Game Hub, com a visão do jogo e o objetivo da experiência.](http://localhost:2368/content/images/projetos/palworld-card-game/game-hub-escopo.jpg)
 
-A partida segue as regras oficiais: baralho de 50 cartas, Souls que entram duas por turno e as fases Preparar, Comprar, Souls, Principal e Encerrar. Quem começa é decidido no pedra, papel e tesoura. Os painéis mostram a vida, as Souls disponíveis e o que dá para fazer naquele momento.
+O escopo fica dentro do projeto e descreve o jogo que quero construir antes de detalhar a implementação.
 
-![Mesa de duelo com Pals em campo, a mão do jogador embaixo e a barra de fases no centro](http://localhost:2368/content/images/projetos/palworld-card-game/mesa-principal.jpg)
+O plano de implementação divide esse escopo em etapas, cada uma com critérios para verificar a entrega. As tarefas detalham o que precisa ser feito e guardam o plano de execução, o relato da implementação e as verificações, de modo que eu consigo acompanhar o que o agente alterou e o que ainda precisa de revisão.
 
-A barra do centro mostra a fase atual e leva ao fim do turno.
+Meu papel é definir o que quero e observar o jogo funcionar para apontar o que precisa mudar, inclusive quando um problema só aparece durante uma partida.
 
-Na 0.14.0 entraram as animações no estilo dos jogos de cartas de console: invocação em três tempos, corte de ativação quando alguém joga um Evento, ataque com rastro e zoom e um letreiro no golpe final. Todas pulam com um clique, e a opção reduzir movimento troca cada uma por um fade curto.
+## Quando comprar uma carta parecia comprar várias
 
-![Tela de apresentação do duelo com o jogador à esquerda, o adversário Azarys à direita e VS no centro](http://localhost:2368/content/images/projetos/palworld-card-game/mesa-vs.jpg)
+Durante uma partida, percebi que a animação da compra parecia puxar cartas várias vezes e relatei o problema na tarefa PAL-0016\. O diagnóstico registrado nela encontrou uma causa específica: os eventos de compra estavam animando as últimas cartas do estado final da mão.
 
-Antes de cada duelo, a apresentação dos dois lados.
+![Tarefa PAL-0016 aberta no Game Hub, com o diagnóstico da animação e os quatro passos do plano marcados.](http://localhost:2368/content/images/projetos/palworld-card-game/game-hub-tarefa-plano.jpg)
 
-## Baralhos e catálogo
+O problema que percebi jogando virou uma tarefa com diagnóstico e passos de execução registrados.
 
-O catálogo reúne as 154 cartas, com busca e filtros por cor, tipo e custo. O construtor confere as regras do baralho enquanto você monta, e os decks prontos podem ser copiados para editar.
+A correção organizou as animações em uma fila por lote de compra, e o relatório de verificação registrou oito voos de cartas para oito cartas compradas em uma partida. A tarefa segue em revisão, portanto esse resultado é o registro da verificação feita, ainda sem aprovação final.
 
-![Catálogo com a grade de cartas e os filtros por cor no topo](http://localhost:2368/content/images/projetos/palworld-card-game/catalogo.jpg)
+![Relatório da tarefa PAL-0016 no Game Hub com instruções de teste e a verificação de oito cartas compradas para oito animações.](http://localhost:2368/content/images/projetos/palworld-card-game/game-hub-tarefa-verificacao.jpg)
 
-154 cartas, 96 Pals, 9 elementos e 289 artes.
+O relatório explica como testar e registra a verificação realizada. A tarefa continua aguardando minha revisão.
 
-## No PC, no controle e no celular
-
-O jogo funciona inteiro no controle do Xbox, com uma faixa no rodapé que mostra os botões válidos em cada tela. No Android, a interface se ajusta a tablet e celular e o toque longo numa carta abre os detalhes.
-
-![Tela do Duelo Livre no formato de celular, com a grade de duelistas e o botão Duelar](http://localhost:2368/content/images/projetos/palworld-card-game/duelo-livre-mobile.jpg)
-
-Duelo Livre no celular: toque e segure para ver as cartas de cada duelista.
-
-## Como cada versão sai
-
-Antes de publicar, um script roda as baterias de regras e de combate, joga uma partida pelo mouse conferindo o que está sob o cursor e captura 15 telas no PC e no celular para comparar com a versão anterior. Só depois os pacotes de Windows e Android são gerados. Dentro do jogo, o botão Atualizar avisa quando existe versão nova.
-
-## Onde baixar
-
-O instalador para Windows, a versão portátil e o APK para Android ficam na [página de downloads no GitHub](https://github.com/mayccoisa/palworld-card-game-releases/releases/latest?ref=localhost). O código do jogo fica num repositório privado. Os outros projetos estão na [página de projetos](http://localhost:2368/projetos/).
+Continuo aprendendo a desenvolver jogos com IA enquanto construo uma forma de jogar cartas naquele universo que tanto gostei de explorar. Para quem quiser experimentar também, as versões estão na [página de downloads do projeto](https://github.com/mayccoisa/palworld-card-game-releases/releases/latest?ref=localhost).
