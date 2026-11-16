@@ -342,7 +342,7 @@ h4 {
 /* Abertura compacta: uma linha de contexto e o titulo em linha unica no
    desktop, para a dobra chegar logo na primeira fileira de noticias. */
 .intro {
-    padding: 64px 0 48px;
+    padding: 40px 0 28px;
 }
 
 .intro-top {
@@ -360,9 +360,9 @@ h4 {
 }
 
 .intro h1 {
-    max-width: 980px;
-    margin: 0 0 18px;
-    font-size: clamp(34px, 4.6vw, 58px);
+    max-width: none;
+    margin: 0 0 14px;
+    font-size: clamp(32px, 4vw, 52px);
     line-height: 1.06;
     letter-spacing: -2.4px;
 }
@@ -464,17 +464,18 @@ h4 {
     gap: 28px 40px;
     min-height: 0;
     margin: 0;
-    padding-bottom: 56px;
+    padding-bottom: 40px;
     background: none;
     border: 0;
     border-radius: 0;
     overflow: visible;
 }
 
+/* A capa encolhe em telas baixas para o começo dos projetos aparecer na dobra */
 .featured-post > .feature-art,
 .featured-post > .feature-photo {
     flex: 7 1 420px;
-    height: 420px;
+    height: clamp(240px, calc(100vh - 440px), 420px);
     border-radius: 6px;
 }
 
@@ -1337,10 +1338,12 @@ h4 {
 
 .proj-intro h1 {
     max-width: 900px;
+    font-size: clamp(30px, 3.4vw, 44px);
+    letter-spacing: -1.8px;
 }
 
 .proj-lead {
-    max-width: 640px;
+    max-width: none;
     margin: 14px 0 0;
     font-size: 15px;
     line-height: 1.65;
@@ -1360,7 +1363,7 @@ h4 {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    padding-bottom: 20px;
+    padding-bottom: 16px;
 }
 
 .proj-filter {
@@ -1389,11 +1392,25 @@ h4 {
 /* Destaque: mesma estrutura do destaque da home */
 .proj-featured {
     margin-top: 0;
+    min-height: 0;
+}
+
+.proj-featured > .proj-capa {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 240px;
+}
+
+/* No destaque quem manda na altura é o texto; a arte só preenche */
+.proj-featured > .proj-capa svg,
+.proj-featured > .proj-capa img {
+    position: absolute;
+    inset: 0;
 }
 
 .proj-featured .feature-copy {
-    gap: 10px;
-    padding: 22px 26px;
+    gap: 8px;
+    padding: 18px 26px;
 }
 
 .proj-featured .feature-copy h2 {
@@ -1412,6 +1429,88 @@ h4 {
 
 .proj-featured .proj-date {
     color: var(--muted-2);
+}
+
+/* Capa do projeto: proporção fixa, arte da marca por tipo ou imagem real */
+.proj-capa {
+    --c-bg: var(--violet-soft);
+    --c-ink: var(--violet-ink);
+    --c-line: #b9a2ec;
+    --c-accent: var(--violet);
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--c-bg);
+}
+
+.proj-capa svg,
+.proj-capa img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.proj-capa-jogos {
+    --c-bg: #2b1550;
+    --c-ink: #f3ecff;
+    --c-line: #8f6fd6;
+    --c-accent: var(--coral);
+}
+
+.proj-capa-playnite {
+    --c-bg: var(--coral-soft);
+    --c-ink: #7a2a18;
+    --c-line: #e0a998;
+    --c-accent: var(--coral);
+}
+
+.proj-capa-pm {
+    --c-bg: var(--ink);
+    --c-ink: var(--paper);
+    --c-line: #574a6d;
+    --c-accent: var(--violet-bright);
+}
+
+.proj-capa .c-bg {
+    fill: var(--c-bg);
+}
+
+.proj-capa .c-line {
+    fill: none;
+    stroke: var(--c-line);
+    stroke-width: 2;
+}
+
+.proj-capa .c-stroke {
+    fill: none;
+    stroke: var(--c-line);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.proj-capa .c-accent {
+    fill: var(--c-accent);
+}
+
+.proj-capa .c-accent-stroke {
+    fill: none;
+    stroke: var(--c-accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.proj-capa .c-dot {
+    fill: var(--c-line);
+}
+
+.proj-capa .c-sigla {
+    fill: var(--c-ink);
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: -4px;
 }
 
 .proj-info {
@@ -1493,7 +1592,7 @@ h4 {
 }
 
 .proj-head {
-    padding: 34px 0 14px;
+    padding: 16px 0 12px;
 }
 
 .proj-grid {
@@ -1514,36 +1613,21 @@ h4 {
 .proj-cover {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 12px;
-    min-height: 124px;
-    padding: 18px 20px;
-    background: #f0e8fb;
-    color: var(--violet-ink);
-}
-
-.proj-card:nth-child(3n + 2) .proj-cover {
-    background: #2b1550;
-    color: #e6d9ff;
-}
-
-.proj-card:nth-child(3n + 3) .proj-cover {
-    background: var(--coral-soft);
-    color: #7a2a18;
+    gap: 6px;
+    padding: 18px 20px 0;
+    color: var(--ink);
 }
 
 .proj-type {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.1px;
-    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--muted);
 }
 
 .proj-cover h3 {
     margin: 0;
-    font-size: 24px;
-    line-height: 1.15;
-    letter-spacing: -1px;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
     color: inherit;
 }
 
@@ -1597,7 +1681,7 @@ h4 {
 
 /* Bloco da home */
 .proj-home {
-    padding: 32px 0 56px;
+    padding: 28px 0 56px;
     border-top: 1px solid var(--line);
 }
 
@@ -1623,8 +1707,11 @@ h4 {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding-top: 18px;
-    border-top: 1px solid var(--ink);
+}
+
+.proj-mini > .proj-capa {
+    margin-bottom: 8px;
+    border-radius: 6px;
 }
 
 .proj-mini .proj-type {
@@ -1809,6 +1896,12 @@ h4 {
         grid-template-columns: 1fr;
     }
 
+    .proj-featured > .proj-capa {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        min-height: 0;
+    }
+
     .feature-art {
         min-height: 200px;
         padding: 20px 26px;
@@ -1850,21 +1943,51 @@ h4 {
     }
 
     .intro {
-        padding: 36px 0 32px;
+        padding: 28px 0 20px;
     }
 
     .intro h1 {
-        letter-spacing: -1.3px;
+        font-size: 28px;
+        letter-spacing: -1.1px;
     }
 
+    .featured-post {
+        gap: 16px;
+        padding-bottom: 20px;
+    }
+
+    /* Capa do destaque mais baixa no celular, para a primeira capa de projeto subir na dobra */
     .featured-post > .feature-art,
     .featured-post > .feature-photo {
-        height: 240px;
+        height: auto;
+        aspect-ratio: 2 / 1;
+    }
+
+    /* Data e "Ler o artigo" dividem a mesma linha */
+    .featured-post .feature-copy {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        column-gap: 16px;
+    }
+
+    .featured-post .feature-copy > :not(.meta):not(.read) {
+        grid-column: 1 / -1;
+    }
+
+    /* No celular o resumo do destaque sai para os projetos subirem na dobra */
+    .featured-post .feature-copy p {
+        display: none;
+    }
+
+    .featured-post .feature-copy {
+        row-gap: 8px;
     }
 
     .featured-post .feature-copy h2 {
-        font-size: 28px;
-        letter-spacing: -1px;
+        font-size: 24px;
+        line-height: 1.15;
+        letter-spacing: -0.8px;
     }
 
     .post-cover img {
@@ -1928,8 +2051,18 @@ h4 {
         font-size: 14px;
     }
 
+    /* A contagem já aparece no filtro "Todos" */
     .proj-total-mobile {
-        display: block;
+        display: none;
+    }
+
+    /* Destaque mais curto no celular para a grade aparecer na dobra */
+    .proj-featured > .proj-capa {
+        aspect-ratio: 21 / 9;
+    }
+
+    .proj-featured .feature-copy p {
+        display: none;
     }
 
     /* Filtros rolam na horizontal, encostados nas bordas da tela */
@@ -1955,7 +2088,7 @@ h4 {
     }
 
     .proj-head {
-        padding: 30px 0 14px;
+        padding: 16px 0 12px;
     }
 
     .proj-head .section-count {
@@ -1968,8 +2101,7 @@ h4 {
     }
 
     .proj-cover {
-        min-height: 104px;
-        padding: 16px 18px;
+        padding: 16px 18px 0;
     }
 
     .proj-cover h3 {
@@ -1987,7 +2119,11 @@ h4 {
     }
 
     .proj-home {
-        padding: 18px 16px 18px;
+        padding: 20px 0 40px;
+    }
+
+    .proj-home .section-note {
+        display: none;
     }
 
     .proj-home .section-head {
@@ -1997,6 +2133,7 @@ h4 {
 
     .proj-home-grid {
         grid-template-columns: 1fr;
+        margin-top: 12px;
     }
 
     .foot-meta {

@@ -2,21 +2,7 @@
 {{#match modo "destaque"}}
     {{#match destaque "sim"}}
         <article class="featured proj-featured" data-tipo="{{tipo}}" aria-label="Projeto em destaque">
-            <div class="feature-art" aria-hidden="true">
-                <div class="window">
-                    <div class="window-head">
-                        <i></i><i></i><i></i>
-                        <span>{{janela}}</span>
-                    </div>
-                    <div class="code">
-                        <span>{{janela_nota}}</span><br />
-                        {{#if linha1}}<b>saves</b> / {{linha1}}<br />{{/if}}
-                        {{#if linha2}}<b>saves</b> / {{linha2}}<br />{{/if}}
-                        {{#if linha3}}<strong>{{linha3}}</strong>{{/if}}<span class="cursor">▌</span>
-                    </div>
-                </div>
-                <span class="art-caption">Projeto em destaque</span>
-            </div>
+            {{> "projetos/capa"}}
 
             <div class="feature-copy">
                 <span class="tag">{{tipo_nome}} · em destaque</span>
@@ -39,6 +25,7 @@
 {{#match modo "grade"}}
     {{#match destaque "!=" "sim"}}
         <article class="proj-card" data-tipo="{{tipo}}">
+            {{> "projetos/capa"}}
             <div class="proj-cover">
                 <span class="proj-type">{{tipo_nome}}</span>
                 <h3>{{nome}}</h3>
@@ -62,6 +49,7 @@
 {{#match modo "home"}}
     {{#match home "sim"}}
         <article class="proj-mini">
+            {{> "projetos/capa"}}
             <span class="proj-type">{{tipo_nome}}</span>
             <h3>{{nome}}</h3>
             <p>{{resumo}}</p>

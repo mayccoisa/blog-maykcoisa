@@ -63,6 +63,15 @@ celular, recolhe a grade em três cards com o botão "Mostrar mais".
 - **Regras do card:** `acesso="publico"` mostra "Público" e o link do repositório;
   `"privado"` mostra o cadeado e "Sem link público"; `"entrega"` mostra "Código
   privado" e o link da entrega (downloads ou site).
+- **Capas:** `partials/projetos/capa.hbs` desenha a capa de cada projeto em SVG, com
+  fundo e motivo pelo tipo (cartas, biblioteca, terminal ou quadro) e a `sigla` em
+  destaque, sempre em 16:9. Para usar uma imagem real, preencha `capa` com o
+  endereço; ela entra com o mesmo duotom das capas dos artigos.
+- **Primeira dobra:** a capa do destaque da home acompanha a altura da tela
+  (`clamp(240px, 100vh - 440px, 420px)`), para o começo dos projetos aparecer em
+  1280×720, 1366×768 e 390×844. No celular a capa do destaque fica em 2:1, o resumo
+  some e a data divide a linha com "Ler o artigo", para o topo da primeira capa de
+  projeto aparecer também em 375×812.
 - **Ao incluir ou tirar um projeto,** atualize também `partials/projetos/total.hbs`.
 - Evite campos com nome de helper do Ghost (`link`, `date`, `url`): o Handlebars
   chama o helper no lugar do valor.
