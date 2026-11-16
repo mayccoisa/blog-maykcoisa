@@ -147,7 +147,8 @@ h4 {
     color: var(--muted);
 }
 
-/* Capas em duotom: qualquer foto vira violeta escuro e lavanda */
+/* Capas de foto: imagem na cor original, com fundo escuro enquanto carrega.
+   A classe se chama .duo porque antes as fotos levavam um filtro violeta. */
 .duo {
     position: relative;
     overflow: hidden;
@@ -159,18 +160,6 @@ h4 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(1) contrast(1.08);
-    mix-blend-mode: screen;
-    opacity: 0.92;
-}
-
-.duo::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--violet-soft);
-    mix-blend-mode: multiply;
-    pointer-events: none;
 }
 
 /* ---------------------------------------------------------------- header -- */
@@ -2188,20 +2177,13 @@ h4 {
     }
 }
 
-/* -------------------------------------------- card de projeto com artigo -- */
+/* -------------------------------------------- card de projeto clicável -- */
 
-.proj-capa-link {
-    display: block;
-    overflow: hidden;
-    border-radius: inherit;
-}
-
-.proj-capa-link .proj-capa > * {
-    transition: transform 0.25s ease;
-}
-
-.proj-capa-link:hover .proj-capa > * {
-    transform: scale(1.03);
+/* O link do nome se estica sobre o card inteiro; o link do GitHub fica acima dele */
+.proj-mini,
+.proj-card,
+.proj-featured {
+    position: relative;
 }
 
 .proj-titulo-link {
@@ -2209,10 +2191,53 @@ h4 {
     text-decoration: none;
 }
 
-.proj-titulo-link:hover {
+.proj-titulo-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.proj-foot .proj-link,
+.proj-foot .proj-nolink {
+    position: relative;
+    z-index: 2;
+}
+
+.proj-mini:hover .proj-titulo-link,
+.proj-card:hover .proj-titulo-link,
+.proj-featured:hover .proj-titulo-link {
     color: var(--violet);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+}
+
+.proj-capa-link {
+    display: block;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.proj-mini > .proj-capa-link {
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
+
+.proj-capa-link .proj-capa > * {
+    transition: transform 0.25s ease;
+}
+
+.proj-mini:hover .proj-capa-link .proj-capa > *,
+.proj-card:hover .proj-capa-link .proj-capa > * {
+    transform: scale(1.03);
+}
+
+.proj-titulo-link:focus-visible {
+    outline: none;
+}
+
+.proj-titulo-link:focus-visible::after {
+    outline: 3px solid var(--violet);
+    outline-offset: 3px;
+    border-radius: inherit;
 }
 
 .nav-search,.side-search{display:none !important}
