@@ -48,10 +48,11 @@
 
 {{#match modo "home"}}
     {{#match home "sim"}}
+        {{!-- Na home o card inteiro leva ao projeto: ao artigo, quando existe, ou à página Projetos --}}
         <article class="proj-mini">
-            {{#if artigo}}<a class="proj-capa-link" href="{{@site.url}}{{artigo}}" tabindex="-1" aria-hidden="true">{{> "projetos/capa"}}</a>{{else}}{{> "projetos/capa"}}{{/if}}
+            {{#if artigo}}<a class="proj-capa-link" href="{{@site.url}}{{artigo}}" tabindex="-1" aria-hidden="true">{{> "projetos/capa"}}</a>{{else}}<a class="proj-capa-link" href="{{@site.url}}/projetos/" tabindex="-1" aria-hidden="true">{{> "projetos/capa"}}</a>{{/if}}
             <span class="proj-type">{{tipo_nome}}</span>
-            <h3>{{#if artigo}}<a class="proj-titulo-link" href="{{@site.url}}{{artigo}}">{{nome}}</a>{{else}}{{nome}}{{/if}}</h3>
+            <h3>{{#if artigo}}<a class="proj-titulo-link" href="{{@site.url}}{{artigo}}">{{nome}}</a>{{else}}<a class="proj-titulo-link" href="{{@site.url}}/projetos/">{{nome}}</a>{{/if}}</h3>
             <p>{{resumo}}</p>
             <div class="proj-foot">
                 {{> "projetos/selo"}}
