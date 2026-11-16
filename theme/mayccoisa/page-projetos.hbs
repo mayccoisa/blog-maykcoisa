@@ -1,0 +1,46 @@
+{{!< default}}
+{{!-- Página /projetos/: o Ghost usa este template na página de slug "projetos".
+      A lista vem de partials/projetos/dados.hbs, renderizada no servidor. --}}
+<section class="wrap intro proj-intro">
+    <div class="intro-top">
+        <p class="eyebrow">O que estou construindo</p>
+        <span class="intro-sign">{{> "projetos/total"}} projetos · com versão nova nos últimos 30 dias</span>
+    </div>
+    <h1>Projetos que saíram do papel. Alguns abertos, outros ainda <em>na oficina.</em></h1>
+    <p class="proj-lead">Jogos, extensões e ferramentas que faço entre um artigo e outro. Projeto público leva direto ao GitHub. Projeto privado aparece com selo e sem link.</p>
+    <span class="proj-total-mobile">{{> "projetos/total"}} projetos · últimos 30 dias</span>
+</section>
+
+<div class="wrap" data-projetos>
+    <div class="proj-filters" role="group" aria-label="Filtrar projetos por tipo" hidden>
+        <button type="button" class="proj-filter" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button type="button" class="proj-filter" data-filtro="jogos" aria-pressed="false">Jogos</button>
+        <button type="button" class="proj-filter" data-filtro="playnite" aria-pressed="false">Extensões Playnite</button>
+        <button type="button" class="proj-filter" data-filtro="ferramentas" aria-pressed="false">Ferramentas e IA</button>
+        <button type="button" class="proj-filter" data-filtro="pm" aria-pressed="false">Produtos de PM</button>
+    </div>
+
+    {{> "projetos/dados" modo="destaque"}}
+
+    <div class="section-head proj-head">
+        <div>
+            <span class="eyebrow">Em atividade</span>
+            <h2>Todos os projetos</h2>
+        </div>
+        <span class="section-count">Do mais recente ao mais antigo, por tipo</span>
+    </div>
+
+    <div class="proj-grid">
+        {{> "projetos/dados" modo="grade"}}
+    </div>
+
+    <p class="proj-empty" hidden>Nenhum projeto deste tipo por enquanto.</p>
+
+    <button type="button" class="proj-more" hidden></button>
+</div>
+
+<section class="wrap closing">
+    <span class="eyebrow">Bastidores</span>
+    <h2>Todo projeto rende uma história no blog.</h2>
+    <a href="{{@site.url}}/#artigos">Ler os artigos <span aria-hidden="true">↗</span></a>
+</section>

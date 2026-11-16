@@ -2,11 +2,8 @@
 {{#is "home"}}
     {{#match pagination.page "=" 1}}
         <section class="wrap intro">
-            <div class="intro-top">
-                <p class="eyebrow">Um blog para quem é curioso</p>
-                <span class="intro-sign">Por Maycon Rocha · Feito de curiosidade</span>
-            </div>
             <h1>Tecnologia, vida real. E um pouco de <em>tudo mais.</em></h1>
+            <p class="intro-sign">Um blog para quem é curioso · Por Maycon Rocha</p>
         </section>
     {{/match}}
 {{/is}}
@@ -21,13 +18,27 @@
             {{/foreach}}
         {{/match}}
 
+        {{#is "home"}}
+            {{#match pagination.page "=" 1}}
+                <section class="proj-home" aria-labelledby="projetos-titulo">
+                    <div class="section-head">
+                        <div class="section-title">
+                            <h2 id="projetos-titulo">Projetos em andamento</h2>
+                            <span class="section-note">Fora do blog, o que estou construindo.</span>
+                        </div>
+                        <a class="proj-home-all" href="{{@site.url}}/projetos/">Ver os {{> "projetos/total"}} projetos <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <div class="proj-home-grid">
+                        {{> "projetos/dados" modo="home"}}
+                    </div>
+                </section>
+            {{/match}}
+        {{/is}}
+
         <div class="editorial">
             <section class="feed" id="artigos">
                 <div class="section-head">
-                    <div>
-                        <span class="eyebrow">Direto do blog</span>
-                        <h2>As últimas descobertas</h2>
-                    </div>
+                    <h2>As últimas descobertas</h2>
                     <span class="section-count">{{plural pagination.total empty="Nenhum artigo" singular="% artigo" plural="% artigos"}}</span>
                 </div>
 

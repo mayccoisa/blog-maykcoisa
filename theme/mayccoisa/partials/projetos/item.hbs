@@ -1,0 +1,74 @@
+{{!-- Um projeto da lista. "modo" vem de quem chamou partials/projetos/dados. --}}
+{{#match modo "destaque"}}
+    {{#match destaque "sim"}}
+        <article class="featured proj-featured" data-tipo="{{tipo}}" aria-label="Projeto em destaque">
+            <div class="feature-art" aria-hidden="true">
+                <div class="window">
+                    <div class="window-head">
+                        <i></i><i></i><i></i>
+                        <span>{{janela}}</span>
+                    </div>
+                    <div class="code">
+                        <span>{{janela_nota}}</span><br />
+                        {{#if linha1}}<b>saves</b> / {{linha1}}<br />{{/if}}
+                        {{#if linha2}}<b>saves</b> / {{linha2}}<br />{{/if}}
+                        {{#if linha3}}<strong>{{linha3}}</strong>{{/if}}<span class="cursor">▌</span>
+                    </div>
+                </div>
+                <span class="art-caption">Projeto em destaque</span>
+            </div>
+
+            <div class="feature-copy">
+                <span class="tag">{{tipo_nome}} · em destaque</span>
+                <h2>{{nome}}</h2>
+                <p>{{resumo}}</p>
+                <div class="proj-info">
+                    {{#if tec1}}<span class="proj-chip">{{tec1}}</span>{{/if}}
+                    {{#if tec2}}<span class="proj-chip">{{tec2}}</span>{{/if}}
+                    <span class="proj-date">Atualizado em <time datetime="{{data_iso}}">{{atualizado}}</time></span>
+                </div>
+                <div class="proj-foot proj-foot-featured">
+                    {{> "projetos/selo"}}
+                    {{> "projetos/link"}}
+                </div>
+            </div>
+        </article>
+    {{/match}}
+{{/match}}
+
+{{#match modo "grade"}}
+    {{#match destaque "!=" "sim"}}
+        <article class="proj-card" data-tipo="{{tipo}}">
+            <div class="proj-cover">
+                <span class="proj-type">{{tipo_nome}}</span>
+                <h3>{{nome}}</h3>
+            </div>
+            <div class="proj-body">
+                <p>{{resumo}}</p>
+                <div class="proj-info">
+                    {{#if tec1}}<span class="proj-chip">{{tec1}}</span>{{/if}}
+                    {{#if tec2}}<span class="proj-chip">{{tec2}}</span>{{/if}}
+                </div>
+                <span class="proj-date">Atualizado em <time datetime="{{data_iso}}">{{atualizado}}</time></span>
+            </div>
+            <div class="proj-foot">
+                {{> "projetos/selo"}}
+                {{> "projetos/link"}}
+            </div>
+        </article>
+    {{/match}}
+{{/match}}
+
+{{#match modo "home"}}
+    {{#match home "sim"}}
+        <article class="proj-mini">
+            <span class="proj-type">{{tipo_nome}}</span>
+            <h3>{{nome}}</h3>
+            <p>{{resumo}}</p>
+            <div class="proj-foot">
+                {{> "projetos/selo"}}
+                {{> "projetos/link"}}
+            </div>
+        </article>
+    {{/match}}
+{{/match}}

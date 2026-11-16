@@ -27,7 +27,6 @@
     {{#get "posts" filter="featured:true" limit="3" order="published_at desc" as |leitura|}}
         {{#if leitura}}
             <section class="side-section">
-                <span class="eyebrow">Para começar</span>
                 <h2>{{#if @custom.reading_list_label}}{{@custom.reading_list_label}}{{else}}Na lista de leitura{{/if}}</h2>
                 {{#foreach leitura}}
                     <a class="rank" href="{{url}}">
@@ -40,10 +39,11 @@
     {{/get}}
 
     <section class="about" id="sobre">
-        <img class="about-mark" src="{{asset "images/avatar.png"}}" alt="" width="52" height="52" />
         <h2>Oi, eu sou o Maycon.</h2>
         <p>Este é o espaço para conectar tecnologia, projetos e a vida que acontece entre uma coisa e outra.</p>
-        <span class="about-note">Pode chegar. A curiosidade é de casa.</span>
-        <a class="about-link" href="{{@site.url}}/sobre/">Conheça o Maycon <span aria-hidden="true">↗</span></a>
+        <div class="about-links">
+            <a class="about-link" href="{{@site.url}}/sobre/">Conheça o Maycon <span aria-hidden="true">↗</span></a>
+            <a class="about-link" href="{{@site.url}}/projetos/">Ver projetos <span aria-hidden="true">↗</span></a>
+        </div>
     </section>
 </aside>

@@ -1,0 +1,105 @@
+{{!--
+    Lista curada dos projetos. Uma chamada por projeto, na ordem em que aparecem:
+    primeiro o destaque, depois por tipo, do mais recente ao mais antigo.
+
+    Campos
+      nome, resumo           texto do card
+      tipo                   jogos | playnite | ferramentas | pm (usado pelo filtro)
+      tipo_nome              rótulo do tipo
+      tec1, tec2             tecnologias (opcionais)
+      data_iso, atualizado   data ISO e data por extenso da última versão
+      acesso                 publico | privado | entrega (código privado, entrega pública)
+      destino, destino_rotulo  endereço e texto do link (vazio no privado)
+      destaque               "sim" no projeto do bloco em destaque da página
+      home                   "sim" nos três projetos do bloco da home
+      janela, janela_nota, linha1, linha2, linha3   arte do destaque
+
+    Mudou o número de projetos? Atualize também partials/projetos/total.hbs.
+--}}
+{{> "projetos/item"
+    nome="SaveVault" tipo="ferramentas" tipo_nome="Ferramentas e IA"
+    resumo="Backup e restauração inteligente de saves de jogos, no PC e em emuladores. Fork do Ludusavi."
+    tec1="Rust" tec2="Fork do Ludusavi" data_iso="2026-10-25" atualizado="25 out 2026"
+    acesso="publico" destino="https://github.com/mayccoisa/savevault" destino_rotulo="Ver no GitHub"
+    destaque="sim" home="sim"
+    janela="savevault" janela_nota="// backup e restauração de saves"
+    linha1="pc" linha2="emuladores" linha3="tudo guardado."}}
+
+{{> "projetos/item"
+    nome="Palworld Card Game" tipo="jogos" tipo_nome="Jogos"
+    resumo="Jogo de cartas de estudo, com editor de baralhos, bot e interface em português e inglês."
+    tec1="Godot" tec2="Windows e Android" data_iso="2026-11-15" atualizado="15 nov 2026"
+    acesso="entrega" destino="https://github.com/mayccoisa/palworld-card-game-releases" destino_rotulo="Downloads no GitHub"
+    home="sim"}}
+
+{{> "projetos/item"
+    nome="Riftbound Card Game" tipo="jogos" tipo_nome="Jogos"
+    resumo="Projeto de estudo com sete decks, tutorial e duelos contra bot, com atualização pelo próprio jogo."
+    tec1="Godot" tec2="Windows e Android" data_iso="2026-10-24" atualizado="24 out 2026"
+    acesso="entrega" destino="https://github.com/mayccoisa/riftbound-card-game-releases" destino_rotulo="Downloads no GitHub"}}
+
+{{> "projetos/item"
+    nome="Busca de Jogos Locais" tipo="playnite" tipo_nome="Extensões Playnite"
+    resumo="Extensão do Playnite que cataloga os jogos guardados no PC, sem depender de launcher, e marca em qual HD cada um está."
+    tec1="C#" tec2="Playnite" data_iso="2026-10-21" atualizado="21 out 2026"
+    acesso="publico" destino="https://github.com/mayccoisa/BuscaDeJogosLocais" destino_rotulo="Ver no GitHub"}}
+
+{{> "projetos/item"
+    nome="Playnite Hub" tipo="playnite" tipo_nome="Extensões Playnite"
+    resumo="Biblioteca e histórico de sessões do Playnite de vários dispositivos numa visão única, com notícias e wishlist da Steam."
+    tec1="TypeScript" data_iso="2026-10-16" atualizado="16 out 2026"
+    acesso="privado"}}
+
+{{> "projetos/item"
+    nome="Game Engineer Harness" tipo="ferramentas" tipo_nome="Ferramentas e IA"
+    resumo="Skills, agentes e modelos para desenvolver jogos com IA de forma consistente entre LLMs."
+    tec1="Skills e agentes" data_iso="2026-11-15" atualizado="15 nov 2026"
+    acesso="privado"}}
+
+{{> "projetos/item"
+    nome="Blog Maykcoisa" tipo="ferramentas" tipo_nome="Ferramentas e IA"
+    resumo="Este blog: tema Ghost próprio e site estático publicado no GitHub Pages."
+    tec1="Ghost" tec2="GitHub Pages" data_iso="2026-11-09" atualizado="9 nov 2026"
+    acesso="publico" destino="https://github.com/mayccoisa/blog-maykcoisa" destino_rotulo="Ver no GitHub"}}
+
+{{> "projetos/item"
+    nome="ai-newtab" tipo="ferramentas" tipo_nome="Ferramentas e IA"
+    resumo="Um diário que o Claude Code monta a partir do que você acompanha, sem chave de API. Dois modos de leitura: Jornal e Portal."
+    tec1="TypeScript" tec2="Fork de ThariqS/ai-newtab" data_iso="2026-10-19" atualizado="19 out 2026"
+    acesso="publico" destino="https://github.com/mayccoisa/ai-newtab" destino_rotulo="Ver no GitHub"}}
+
+{{> "projetos/item"
+    nome="Doc Hub" tipo="pm" tipo_nome="Produtos de PM"
+    resumo="Workspace de Product Management com chat de IA que cria, edita e versiona documentos na própria interface."
+    tec1="TypeScript" data_iso="2026-11-15" atualizado="15 nov 2026"
+    acesso="privado"}}
+
+{{> "projetos/item"
+    nome="Content Studio" tipo="pm" tipo_nome="Produtos de PM"
+    resumo="Estúdio editorial local para ideias, canais, artigos e revisão assistida por IA."
+    tec1="TypeScript" data_iso="2026-11-13" atualizado="13 nov 2026"
+    acesso="privado" home="sim"}}
+
+{{> "projetos/item"
+    nome="Gerenciamento Financeiro" tipo="pm" tipo_nome="Produtos de PM"
+    resumo="Controle de gastos compartilhados do casal, no lugar da planilha do Google Sheets."
+    tec1="Vue" data_iso="2026-11-11" atualizado="11 nov 2026"
+    acesso="privado"}}
+
+{{> "projetos/item"
+    nome="Register Life" tipo="pm" tipo_nome="Produtos de PM"
+    resumo="Sistema operacional pessoal: tarefas, agenda, saúde, estudo e carreira num ciclo de planejar, executar e revisar."
+    tec1="TypeScript" data_iso="2026-11-08" atualizado="8 nov 2026"
+    acesso="privado"}}
+
+{{> "projetos/item"
+    nome="Portfólio de PM" tipo="pm" tipo_nome="Produtos de PM"
+    resumo="Meu portfólio como Product Manager."
+    tec1="JavaScript" data_iso="2026-11-05" atualizado="5 nov 2026"
+    acesso="entrega" destino="https://portifolio-product-manager.vercel.app" destino_rotulo="Abrir o site"}}
+
+{{> "projetos/item"
+    nome="Game Hub" tipo="pm" tipo_nome="Produtos de PM"
+    resumo="Vitrine dos jogos e fila de tarefas para a IA executar, com MCP e auditoria."
+    tec1="TypeScript" tec2="MCP" data_iso="2026-10-25" atualizado="25 out 2026"
+    acesso="privado"}}

@@ -21,9 +21,10 @@ A ativação é feita em **Ghost › Settings › Design › Change theme**, ou 
 
 ```
 default.hbs               Layout: head, {{ghost_head}}, header, main, footer
-index.hbs                 Home: abertura editorial, destaque, grade, coluna lateral
+index.hbs                 Home: abertura editorial, destaque, projetos, grade, coluna lateral
 post.hbs                  Artigo: capa, conteúdo, assuntos, autor, relacionados
 page.hbs                  Página estática (Sobre, Contato)
+page-projetos.hbs         Página /projetos/: abertura, filtros, destaque, grade, bastidores
 tag.hbs                   Assunto: cabeçalho do assunto + grade
 author.hbs                Autor: apresentação + grade
 error.hbs                 404
@@ -34,9 +35,37 @@ partials/
   card.hbs                Card da grade
   sidebar.hbs             Busca, assuntos, lista de leitura e bloco sobre
   pagination.hbs          Paginação da grade
+  projetos/dados.hbs      Lista curada dos projetos (uma chamada por projeto)
+  projetos/item.hbs       Card do projeto nos modos destaque, grade e home
+  projetos/selo.hbs       Selo Público, Privado ou Código privado
+  projetos/link.hbs       Link do card ou "Sem link público"
+  projetos/total.hbs      Número total de projetos
 assets/css/main.css       Tokens, componentes e responsivo
-assets/js/main.js         Menu mobile
+assets/js/main.js         Filtros e "Mostrar mais" dos projetos, menu mobile
 ```
+
+## Projetos
+
+A vitrine é uma lista curada à mão, sem API do GitHub. O Ghost não deixa o template
+ler um JSON do tema, então os dados ficam em `partials/projetos/dados.hbs`: cada
+projeto é uma chamada ao partial `projetos/item` com os campos descritos no topo do
+arquivo. Tudo é renderizado no servidor, por isso a lista completa aparece sem JS e
+entra inteira no export estático. O JS só liga os filtros (com as contagens) e, no
+celular, recolhe a grade em três cards com o botão "Mostrar mais".
+
+- **Página:** `/projetos/` é uma página do Ghost de slug `projetos`, que usa
+  `page-projetos.hbs` sozinha. `scripts/criar-projetos.py` cria a página e põe
+  "Projetos" no menu, logo depois de "Blog" (Ghost parado).
+- **Home:** o bloco "Projetos em andamento" mostra os projetos com `home="sim"`, na
+  ordem da lista.
+- **Destaque:** o projeto com `destaque="sim"` vira o bloco grande da página e sai da
+  grade.
+- **Regras do card:** `acesso="publico"` mostra "Público" e o link do repositório;
+  `"privado"` mostra o cadeado e "Sem link público"; `"entrega"` mostra "Código
+  privado" e o link da entrega (downloads ou site).
+- **Ao incluir ou tirar um projeto,** atualize também `partials/projetos/total.hbs`.
+- Evite campos com nome de helper do Ghost (`link`, `date`, `url`): o Handlebars
+  chama o helper no lugar do valor.
 
 ## Decisões de layout
 
@@ -48,6 +77,12 @@ assets/js/main.js         Menu mobile
   quando há mais de um artigo; com um único artigo ele aparece como card.
 - **Sem imagem de capa:** o card usa um painel tipográfico com o nome do assunto,
   alternando entre três tons da paleta a cada três cards.
+- **Capas em duotom:** toda foto de capa (card, destaque e artigo) passa pela classe
+  `.duo`, que converte a imagem para violeta escuro e lavanda. Fotos de origens
+  diferentes ficam com cara de série. Sem foto, o destaque mostra a janela de código.
+- **Refino de 16/11/2026:** menos molduras (seções separadas por espaço e linhas
+  finas), rótulos sem caixa alta, texto mínimo de 13 px, títulos em peso 700,
+  cabeçalho sem botão de chamada e citação entre duas linhas, sem barra lateral.
 - **Busca:** o botão usa `data-ghost-search`, então quem responde é a busca nativa
   do Ghost (Sodo), injetada por `{{ghost_head}}`.
 - **Assuntos vazios:** o bloco lateral só aparece quando existe algum assunto com
