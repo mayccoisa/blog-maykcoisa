@@ -1,0 +1,26 @@
+{{!-- Uma referência da lista. Chamada por partials/referencias/dados. --}}
+<article class="proj-card ref-card" data-tipo="{{tipo}}">
+    <div class="proj-cover">
+        <span class="proj-type">{{tipo_nome}}</span>
+        <h3>{{repo}}</h3>
+    </div>
+    <div class="proj-body">
+        <p class="ref-oque">{{oque}}</p>
+        <div class="ref-bloco">
+            <span class="ref-rotulo">Onde usei</span>
+            <p>{{onde}}</p>
+        </div>
+        <div class="ref-bloco">
+            <span class="ref-rotulo">Por que recomendo</span>
+            <p>{{porque}}</p>
+        </div>
+        <div class="proj-info">
+            {{#if tec1}}<span class="proj-chip">{{tec1}}</span>{{/if}}
+            {{#if tec2}}<span class="proj-chip">{{tec2}}</span>{{/if}}
+        </div>
+    </div>
+    <div class="proj-foot">
+        <span class="selo selo-publico">Usei de verdade</span>
+        <a class="proj-link" href="{{destino}}" target="_blank" rel="noopener">Ver no GitHub <span aria-hidden="true">↗</span><span class="visually-hidden"> ({{repo}}, abre em nova aba)</span></a>
+    </div>
+</article>

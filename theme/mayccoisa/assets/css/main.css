@@ -2565,3 +2565,26 @@ h4 {
         padding: 0 12px;
     }
 }
+
+/* ----------------------------------------------------------- referências -- */
+.ref-card .proj-body {
+    gap: 14px;
+}
+
+.ref-card .ref-oque {
+    color: var(--ink);
+}
+
+.ref-bloco {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ref-rotulo {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--violet);
+}

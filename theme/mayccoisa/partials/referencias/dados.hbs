@@ -1,0 +1,55 @@
+{{!--
+    Lista curada de repositórios que já usei e recomendo. Uma chamada por referência.
+    Para acrescentar uma, copie um bloco e preencha os campos.
+
+    Campos
+      repo           dono/nome do repositório, como aparece no GitHub
+      destino        endereço do repositório
+      tipo_nome      rótulo do tipo (motor de jogos, backup, publicação...)
+      tipo           jogos | playnite | ferramentas | pm (reservado para filtro)
+      oque           uma linha sobre o que o repositório é
+      onde           onde eu usei, em primeira pessoa
+      porque         por que recomendo, em primeira pessoa
+      tec1, tec2     tecnologias (opcionais)
+
+    Mudou o número de referências? Atualize também partials/referencias/total.hbs.
+--}}
+{{> "referencias/item"
+    repo="mtkennerly/ludusavi" destino="https://github.com/mtkennerly/ludusavi"
+    tipo="ferramentas" tipo_nome="Backup de saves"
+    oque="Backup e restauração de saves de jogos, com manifesto colaborativo de onde cada jogo guarda os arquivos."
+    onde="É a base do SaveVault. Parti de um fork dele para construir meu gerenciador de saves de jogos de PC e emuladores."
+    porque="Resolve o problema difícil, que é saber onde cada jogo grava o save, e entrega isso aberto e mantido pela comunidade. Eu só precisei cuidar da experiência por cima."
+    tec1="Rust"}}
+
+{{> "referencias/item"
+    repo="ThariqS/ai-newtab" destino="https://github.com/ThariqS/ai-newtab"
+    tipo="ferramentas" tipo_nome="Claude Code"
+    oque="Uma nova aba do navegador que o Claude Code monta como diário, a partir do que você acompanha."
+    onde="Fiz meu próprio fork para testar o conceito, com os modos de leitura Jornal e Portal."
+    porque="Mostra um jeito diferente de usar o Claude Code: sem chave de API, com a assinatura que já existe. Bom ponto de partida para ver um agente local fazendo algo útil no dia a dia."
+    tec1="TypeScript"}}
+
+{{> "referencias/item"
+    repo="JosefNemec/Playnite" destino="https://github.com/JosefNemec/Playnite"
+    tipo="playnite" tipo_nome="Biblioteca de jogos"
+    oque="Gerenciador de biblioteca de jogos de vários launchers, com suporte a extensões."
+    onde="Minha biblioteca de jogos vive nele, e escrevi várias extensões para ele: Busca de Jogos Locais, Playnite Hub e Repack Hub."
+    porque="Junta Steam, GOG, emuladores e jogos soltos numa biblioteca só, e a API de extensões é boa de trabalhar. Para quem tem jogo espalhado, resolve."
+    tec1="C#" tec2="WPF"}}
+
+{{> "referencias/item"
+    repo="godotengine/godot" destino="https://github.com/godotengine/godot"
+    tipo="jogos" tipo_nome="Motor de jogos"
+    oque="Motor de jogos livre e de código aberto, 2D e 3D, com editor próprio."
+    onde="Fiz nele o Palworld Card Game e o Riftbound Card Game, para Windows e Android."
+    porque="Leve, abre rápido, exporta para várias plataformas, e a parte 2D é ótima para jogo de cartas. O GDScript deixa o protótipo andar sem atrito."
+    tec1="Godot" tec2="GDScript"}}
+
+{{> "referencias/item"
+    repo="TryGhost/Ghost" destino="https://github.com/TryGhost/Ghost"
+    tipo="ferramentas" tipo_nome="Publicação"
+    oque="Plataforma de publicação em Node.js, com editor, temas e API."
+    onde="Este blog. Escrevo e edito no Ghost local, com tema próprio, e publico como site estático no GitHub Pages."
+    porque="O editor é agradável e o sistema de temas em Handlebars é simples de dominar. Dá para começar com o tema padrão e trocar peça por peça."
+    tec1="Node.js" tec2="Handlebars"}}

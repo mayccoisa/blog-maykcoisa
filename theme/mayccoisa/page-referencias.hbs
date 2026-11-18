@@ -1,0 +1,23 @@
+{{!< default}}
+{{!-- Página /referencias/: o Ghost usa este template na página de slug "referencias".
+      A lista vem de partials/referencias/dados.hbs, renderizada no servidor. --}}
+<section class="wrap intro proj-intro">
+    <div class="intro-top">
+        <p class="eyebrow">O que uso e recomendo</p>
+        <span class="intro-sign">{{> "referencias/total"}} repositórios · todos testados por mim</span>
+    </div>
+    <h1>Repositórios que já usei e <em>recomendo.</em></h1>
+    <p class="proj-lead">Cada um vem com onde eu usei e por que vale a pena. Não é lista de estrelas do GitHub: só entra o que passou pelas minhas mãos. A lista cresce conforme eu uso coisa nova.</p>
+</section>
+
+<div class="wrap">
+    <div class="proj-grid">
+        {{> "referencias/dados"}}
+    </div>
+</div>
+
+<section class="wrap closing">
+    <span class="eyebrow">Colocando em prática</span>
+    <h2>Quase todo projeto meu usa alguma dessas referências.</h2>
+    <a href="{{@site.url}}/projetos/">Ver os projetos <span aria-hidden="true">↗</span></a>
+</section>
