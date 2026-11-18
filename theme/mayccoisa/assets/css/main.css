@@ -2567,12 +2567,122 @@ h4 {
 }
 
 /* ----------------------------------------------------------- referências -- */
-.ref-card .proj-body {
-    gap: 14px;
+.ref-lista {
+    padding-bottom: 8px;
 }
 
-.ref-card .ref-oque {
+.ref-grupo {
+    margin-bottom: 36px;
+}
+
+.ref-grupo-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--ink);
+}
+
+.ref-grupo-head h2 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.ref-item {
+    border-bottom: 1px solid var(--line);
+}
+
+.ref-linha {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 0 4px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.ref-linha::-webkit-details-marker {
+    display: none;
+}
+
+.ref-linha:hover {
+    background: var(--violet-soft);
+}
+
+.ref-chevron {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: rotate(-45deg);
+    transition: transform 0.15s ease;
+}
+
+.ref-item[open] .ref-chevron {
+    transform: rotate(45deg);
+}
+
+.ref-nome {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    overflow-wrap: anywhere;
+}
+
+.ref-tipo {
+    flex-shrink: 0;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #f6f2fb;
+    font-size: 11px;
+    color: var(--muted-2);
+}
+
+.ref-gh {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius);
+    color: var(--muted-2);
+}
+
+.ref-gh:hover {
+    background: #fff;
     color: var(--ink);
+}
+
+.ref-detalhe {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 4px 8px 20px 28px;
+}
+
+.ref-detalhe > p {
+    margin: 0;
+}
+
+.ref-oque {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink);
+}
+
+.ref-par {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
 }
 
 .ref-bloco {
@@ -2581,10 +2691,37 @@ h4 {
     gap: 4px;
 }
 
+.ref-bloco p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted-2);
+}
+
 .ref-rotulo {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
     color: var(--violet);
+}
+
+.ref-abrir {
+    align-self: flex-start;
+    gap: 8px;
+}
+
+@media (max-width: 700px) {
+    .ref-tipo {
+        display: none;
+    }
+
+    .ref-par {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .ref-detalhe {
+        padding-left: 8px;
+    }
 }

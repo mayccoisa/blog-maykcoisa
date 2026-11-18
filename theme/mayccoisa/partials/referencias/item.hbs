@@ -1,26 +1,26 @@
-{{!-- Uma referência da lista. Chamada por partials/referencias/dados. --}}
-<article class="proj-card ref-card" data-tipo="{{tipo}}">
-    <div class="proj-cover">
-        <span class="proj-type">{{tipo_nome}}</span>
-        <h3>{{repo}}</h3>
-    </div>
-    <div class="proj-body">
+{{!-- Uma referência da lista, recolhida por padrão. Clique na linha para abrir os detalhes;
+      o ícone do GitHub leva direto ao repositório. Chamada por partials/referencias/dados. --}}
+<details class="ref-item">
+    <summary class="ref-linha">
+        <span class="ref-chevron" aria-hidden="true"></span>
+        <span class="ref-nome">{{repo}}</span>
+        <span class="ref-tipo">{{tipo_nome}}</span>
+        <a class="ref-gh" href="{{destino}}" target="_blank" rel="noopener" aria-label="{{repo}} no GitHub (abre em nova aba)">
+            {{> "referencias/icone-github"}}
+        </a>
+    </summary>
+    <div class="ref-detalhe">
         <p class="ref-oque">{{oque}}</p>
-        <div class="ref-bloco">
-            <span class="ref-rotulo">Onde usei</span>
-            <p>{{onde}}</p>
+        <div class="ref-par">
+            <div class="ref-bloco">
+                <span class="ref-rotulo">Onde usei</span>
+                <p>{{onde}}</p>
+            </div>
+            <div class="ref-bloco">
+                <span class="ref-rotulo">Por que recomendo</span>
+                <p>{{porque}}</p>
+            </div>
         </div>
-        <div class="ref-bloco">
-            <span class="ref-rotulo">Por que recomendo</span>
-            <p>{{porque}}</p>
-        </div>
-        <div class="proj-info">
-            {{#if tec1}}<span class="proj-chip">{{tec1}}</span>{{/if}}
-            {{#if tec2}}<span class="proj-chip">{{tec2}}</span>{{/if}}
-        </div>
+        <a class="proj-link ref-abrir" href="{{destino}}" target="_blank" rel="noopener">{{> "referencias/icone-github"}} Abrir no GitHub <span aria-hidden="true">↗</span></a>
     </div>
-    <div class="proj-foot">
-        <span class="selo selo-publico">Usei de verdade</span>
-        <a class="proj-link" href="{{destino}}" target="_blank" rel="noopener">Ver no GitHub <span aria-hidden="true">↗</span><span class="visually-hidden"> ({{repo}}, abre em nova aba)</span></a>
-    </div>
-</article>
+</details>

@@ -1,55 +1,142 @@
 {{!--
-    Lista curada de repositórios que já usei e recomendo. Uma chamada por referência.
-    Para acrescentar uma, copie um bloco e preencha os campos.
+    Lista curada de repositórios que já usei e recomendo, em três grupos. Uma chamada por
+    referência. Para acrescentar uma, copie um bloco dentro do grupo certo e preencha.
 
     Campos
       repo           dono/nome do repositório, como aparece no GitHub
       destino        endereço do repositório
-      tipo_nome      rótulo do tipo (motor de jogos, backup, publicação...)
-      tipo           jogos | playnite | ferramentas | pm (reservado para filtro)
+      tipo_nome      rótulo curto que aparece na linha recolhida
       oque           uma linha sobre o que o repositório é
       onde           onde eu usei, em primeira pessoa
       porque         por que recomendo, em primeira pessoa
-      tec1, tec2     tecnologias (opcionais)
 
     Mudou o número de referências? Atualize também partials/referencias/total.hbs.
 --}}
-{{> "referencias/item"
-    repo="mtkennerly/ludusavi" destino="https://github.com/mtkennerly/ludusavi"
-    tipo="ferramentas" tipo_nome="Backup de saves"
-    oque="Backup e restauração de saves de jogos, com manifesto colaborativo de onde cada jogo guarda os arquivos."
-    onde="É a base do SaveVault. Parti de um fork dele para construir meu gerenciador de saves de jogos de PC e emuladores."
-    porque="Resolve o problema difícil, que é saber onde cada jogo grava o save, e entrega isso aberto e mantido pela comunidade. Eu só precisei cuidar da experiência por cima."
-    tec1="Rust"}}
+<section class="ref-grupo" aria-labelledby="ref-skills">
+    <div class="ref-grupo-head">
+        <h2 id="ref-skills">Skills para agentes de IA</h2>
+        <span class="section-count">8 repositórios</span>
+    </div>
 
-{{> "referencias/item"
-    repo="ThariqS/ai-newtab" destino="https://github.com/ThariqS/ai-newtab"
-    tipo="ferramentas" tipo_nome="Claude Code"
-    oque="Uma nova aba do navegador que o Claude Code monta como diário, a partir do que você acompanha."
-    onde="Fiz meu próprio fork para testar o conceito, com os modos de leitura Jornal e Portal."
-    porque="Mostra um jeito diferente de usar o Claude Code: sem chave de API, com a assinatura que já existe. Bom ponto de partida para ver um agente local fazendo algo útil no dia a dia."
-    tec1="TypeScript"}}
+    {{> "referencias/item"
+        repo="mattpocock/skills" destino="https://github.com/mattpocock/skills" tipo_nome="Engenharia"
+        oque="Coleção de skills de engenharia para agentes: TDD, revisão de código, desenho de módulos e pull request."
+        onde="Adaptei cinco delas para o Product Hub: tdd, code-review, codebase-design, pr e escrita para agentes. Cada skill leva o crédito e a licença de origem."
+        porque="São curtas, opinativas e fazem o agente seguir um fluxo de verdade, não só gerar código. Dá para adaptar peça por peça, sem instalar o pacote inteiro."}}
 
-{{> "referencias/item"
-    repo="JosefNemec/Playnite" destino="https://github.com/JosefNemec/Playnite"
-    tipo="playnite" tipo_nome="Biblioteca de jogos"
-    oque="Gerenciador de biblioteca de jogos de vários launchers, com suporte a extensões."
-    onde="Minha biblioteca de jogos vive nele, e escrevi várias extensões para ele: Busca de Jogos Locais, Playnite Hub e Repack Hub."
-    porque="Junta Steam, GOG, emuladores e jogos soltos numa biblioteca só, e a API de extensões é boa de trabalhar. Para quem tem jogo espalhado, resolve."
-    tec1="C#" tec2="WPF"}}
+    {{> "referencias/item"
+        repo="pmalliance/product-marketing-skills" destino="https://github.com/pmalliance/product-marketing-skills" tipo_nome="Marketing de produto"
+        oque="Skills de marketing de produto: posicionamento, mensagem, lançamento e material de vendas."
+        onde="Serviu de base metodológica para as minhas skills de plano de lançamento, posicionamento e mensagem e material para o comercial."
+        porque="Traz método em vez de texto genérico: posicionamento, casa de mensagens e etapas de lançamento. É um bom ponto de partida para quem faz PMM com IA."}}
 
-{{> "referencias/item"
-    repo="godotengine/godot" destino="https://github.com/godotengine/godot"
-    tipo="jogos" tipo_nome="Motor de jogos"
-    oque="Motor de jogos livre e de código aberto, 2D e 3D, com editor próprio."
-    onde="Fiz nele o Palworld Card Game e o Riftbound Card Game, para Windows e Android."
-    porque="Leve, abre rápido, exporta para várias plataformas, e a parte 2D é ótima para jogo de cartas. O GDScript deixa o protótipo andar sem atrito."
-    tec1="Godot" tec2="GDScript"}}
+    {{> "referencias/item"
+        repo="coreyhaines31/marketingskills" destino="https://github.com/coreyhaines31/marketingskills" tipo_nome="Copy e conversão"
+        oque="Skills de marketing, copywriting e otimização de conversão."
+        onde="Adaptei as skills de copy e conversão nas regras de texto da minha skill de landing page."
+        porque="As regras de copy são objetivas e mensuráveis, fáceis de virar checklist. Ajuda a escrever página que converte sem cair em frase de efeito."}}
 
-{{> "referencias/item"
-    repo="TryGhost/Ghost" destino="https://github.com/TryGhost/Ghost"
-    tipo="ferramentas" tipo_nome="Publicação"
-    oque="Plataforma de publicação em Node.js, com editor, temas e API."
-    onde="Este blog. Escrevo e edito no Ghost local, com tema próprio, e publico como site estático no GitHub Pages."
-    porque="O editor é agradável e o sistema de temas em Handlebars é simples de dominar. Dá para começar com o tema padrão e trocar peça por peça."
-    tec1="Node.js" tec2="Handlebars"}}
+    {{> "referencias/item"
+        repo="nextlevelbuilder/ui-ux-pro-max-skill" destino="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill" tipo_nome="UI e UX"
+        oque="Base de regras e diretrizes de UX e de interface, em formato que o agente consegue consultar."
+        onde="Filtrei as diretrizes de UX e usei como base das minhas decisões de interface e das seções de landing page. Das 119 regras, tirei as de mobile nativo e as de performance."
+        porque="Tem muita regra concreta de usabilidade já organizada, o que poupa semanas de pesquisa. Vale filtrar para o seu contexto, como eu fiz."}}
+
+    {{> "referencias/item"
+        repo="fatihaydost/brand-identity-skill" destino="https://github.com/fatihaydost/brand-identity-skill" tipo_nome="Marca e identidade"
+        oque="Skill que monta uma identidade de marca: paleta, tipografia, acessibilidade e modelos de site."
+        onde="Trouxe a versão 1.1.1 sem edição para dentro da minha skill de marca do produto, com os avisos de licença de terceiros."
+        porque="Entrega o processo completo de identidade, com paleta medida em contraste e catálogo de fontes, não só inspiração. Não precisei reinventar nada."}}
+
+    {{> "referencias/item"
+        repo="dvy1987/agent-loom" destino="https://github.com/dvy1987/agent-loom" tipo_nome="SVG e ilustração"
+        oque="Coleção de skills para agentes, incluindo uma de criação de SVG."
+        onde="Adaptei o ofício de SVG para o sistema de ilustração do hub, com cor por token do design system e sem animação por padrão."
+        porque="Dá regras claras para o agente desenhar SVG que não parece improvisado: enquadramento, traço e peso. Boa base para ilustração de produto."}}
+
+    {{> "referencias/item"
+        repo="anthropics/skills" destino="https://github.com/anthropics/skills" tipo_nome="Oficial Anthropic"
+        oque="Repositório oficial de skills de exemplo da Anthropic, incluindo a de frontend-design."
+        onde="A skill de frontend-design entrou, com alterações, nos gates da minha skill de landing page."
+        porque="É a referência de como escrever uma skill bem feita, vinda de quem faz o Claude. Ler o formato já melhora as suas próprias skills."}}
+
+    {{> "referencias/item"
+        repo="ibelick/ui-skills" destino="https://github.com/ibelick/ui-skills" tipo_nome="UI e acessibilidade"
+        oque="Skills de interface: melhorar UI, corrigir acessibilidade e performance de animação."
+        onde="Instalei no meu harness de skills as de melhoria de UI, acessibilidade e performance de movimento."
+        porque="São focadas em corrigir problema real de interface com passos curtos, em vez de dar conselho vago. Funcionam bem como revisão final de tela."}}
+</section>
+
+<section class="ref-grupo" aria-labelledby="ref-projetos">
+    <div class="ref-grupo-head">
+        <h2 id="ref-projetos">Projetos e ferramentas</h2>
+        <span class="section-count">5 repositórios</span>
+    </div>
+
+    {{> "referencias/item"
+        repo="mtkennerly/ludusavi" destino="https://github.com/mtkennerly/ludusavi" tipo_nome="Backup de saves"
+        oque="Backup e restauração de saves de jogos, com manifesto colaborativo de onde cada jogo guarda os arquivos."
+        onde="É a base do SaveVault. Parti de um fork dele para construir meu gerenciador de saves de jogos de PC e emuladores."
+        porque="Resolve o problema difícil, que é saber onde cada jogo grava o save, e entrega isso aberto e mantido pela comunidade. Eu só precisei cuidar da experiência por cima."}}
+
+    {{> "referencias/item"
+        repo="ThariqS/ai-newtab" destino="https://github.com/ThariqS/ai-newtab" tipo_nome="Claude Code"
+        oque="Uma nova aba do navegador que o Claude Code monta como diário, a partir do que você acompanha."
+        onde="Fiz meu próprio fork para testar o conceito, com os modos de leitura Jornal e Portal."
+        porque="Mostra um jeito diferente de usar o Claude Code: sem chave de API, com a assinatura que já existe. Bom ponto de partida para ver um agente local fazendo algo útil no dia a dia."}}
+
+    {{> "referencias/item"
+        repo="JosefNemec/Playnite" destino="https://github.com/JosefNemec/Playnite" tipo_nome="Biblioteca de jogos"
+        oque="Gerenciador de biblioteca de jogos de vários launchers, com suporte a extensões."
+        onde="Minha biblioteca de jogos vive nele, e escrevi várias extensões para ele: Busca de Jogos Locais, Playnite Hub e Repack Hub."
+        porque="Junta Steam, GOG, emuladores e jogos soltos numa biblioteca só, e a API de extensões é boa de trabalhar. Para quem tem jogo espalhado, resolve."}}
+
+    {{> "referencias/item"
+        repo="godotengine/godot" destino="https://github.com/godotengine/godot" tipo_nome="Motor de jogos"
+        oque="Motor de jogos livre e de código aberto, 2D e 3D, com editor próprio."
+        onde="Fiz nele o Palworld Card Game e o Riftbound Card Game, para Windows e Android."
+        porque="Leve, abre rápido, exporta para várias plataformas, e a parte 2D é ótima para jogo de cartas. O GDScript deixa o protótipo andar sem atrito."}}
+
+    {{> "referencias/item"
+        repo="TryGhost/Ghost" destino="https://github.com/TryGhost/Ghost" tipo_nome="Publicação"
+        oque="Plataforma de publicação em Node.js, com editor, temas e API."
+        onde="Este blog. Escrevo e edito no Ghost local, com tema próprio, e publico como site estático no GitHub Pages."
+        porque="O editor é agradável e o sistema de temas em Handlebars é simples de dominar. Dá para começar com o tema padrão e trocar peça por peça."}}
+</section>
+
+<section class="ref-grupo" aria-labelledby="ref-libs">
+    <div class="ref-grupo-head">
+        <h2 id="ref-libs">Bibliotecas</h2>
+        <span class="section-count">5 repositórios</span>
+    </div>
+
+    {{> "referencias/item"
+        repo="TypeCellOS/BlockNote" destino="https://github.com/TypeCellOS/BlockNote" tipo_nome="Editor de texto"
+        oque="Editor de blocos para React, no estilo do Notion, construído sobre o ProseMirror."
+        onde="É o editor de documentos do Product Hub."
+        porque="Entrega um editor de blocos pronto, com menu de comandos e arrastar blocos, que dá para ligar numa aplicação React em pouco tempo."}}
+
+    {{> "referencias/item"
+        repo="excalidraw/excalidraw" destino="https://github.com/excalidraw/excalidraw" tipo_nome="Quadro e diagramas"
+        oque="Quadro branco virtual com traço de desenho à mão, usável como componente React."
+        onde="Está no Product Hub, junto do conversor de Mermaid para Excalidraw, para os quadros e diagramas."
+        porque="O visual de rascunho reduz a cerimônia de desenhar um fluxo, e como componente embutido funciona bem dentro de outro produto."}}
+
+    {{> "referencias/item"
+        repo="clauderic/dnd-kit" destino="https://github.com/clauderic/dnd-kit" tipo_nome="Arrastar e soltar"
+        oque="Kit de arrastar e soltar para React, modular e acessível."
+        onde="Usei no Playnite Hub e no Register Life, para reordenar listas e cartões."
+        porque="Pequeno, sem dependência pesada e com suporte a teclado. Resolve do básico ao quadro com colunas."}}
+
+    {{> "referencias/item"
+        repo="shadcn-ui/ui" destino="https://github.com/shadcn-ui/ui" tipo_nome="Componentes de interface"
+        oque="Componentes de interface que você copia para o seu código, em vez de instalar como pacote."
+        onde="É a base de componentes do Register Life, sobre Radix e Tailwind, e do RH Copilot."
+        porque="O código fica no seu repositório, então dá para mudar o que precisar sem brigar com a biblioteca. Bom para começar rápido sem ficar preso."}}
+
+    {{> "referencias/item"
+        repo="microsoft/playwright" destino="https://github.com/microsoft/playwright" tipo_nome="Testes no navegador"
+        oque="Automação e testes de ponta a ponta em Chromium, Firefox e WebKit."
+        onde="Uso nos testes do UAW da WeON."
+        porque="É estável, tem boa ferramenta de depuração e roda o mesmo teste em vários navegadores. Os testes de ponta a ponta deixam de ser frágeis."}}
+</section>
