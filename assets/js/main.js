@@ -139,3 +139,22 @@
         }
     });
 })();
+
+/* A abertura só anima enquanto está visível na aba ativa. */
+(function () {
+    'use strict';
+    var intro = document.querySelector('.intro');
+    if (!intro || !intro.querySelector('.intro-words')) return;
+    var visible = true;
+    function update() {
+        intro.setAttribute('data-motion', !document.hidden && visible ? 'running' : 'paused');
+    }
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+            visible = entries[0].isIntersecting;
+            update();
+        }).observe(intro);
+    }
+    document.addEventListener('visibilitychange', update);
+    update();
+})();

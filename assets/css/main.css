@@ -331,7 +331,7 @@ h4 {
 /* Abertura compacta: uma linha de contexto e o titulo em linha unica no
    desktop, para a dobra chegar logo na primeira fileira de noticias. */
 .intro {
-    padding: 40px 0 28px;
+    padding: 28px 0 32px;
 }
 
 .intro-top {
@@ -350,10 +350,10 @@ h4 {
 
 .intro h1 {
     max-width: none;
-    margin: 0 0 14px;
-    font-size: clamp(32px, 4vw, 52px);
+    margin: 0;
+    font-size: clamp(28px, 3vw, 40px);
     line-height: 1.06;
-    letter-spacing: -2.4px;
+    letter-spacing: -1.6px;
 }
 
 .intro-top + h1 {
@@ -463,19 +463,24 @@ h4 {
 /* A capa encolhe em telas baixas para o começo dos projetos aparecer na dobra */
 .featured-post > .feature-art,
 .featured-post > .feature-photo {
-    flex: 7 1 420px;
-    height: clamp(240px, calc(100vh - 440px), 420px);
+    flex: 4.5 1 300px;
+    height: clamp(270px, 38vh, 340px);
     border-radius: 6px;
 }
 
 .featured-post .feature-copy {
-    flex: 5 1 320px;
+    flex: 7.5 1 420px;
     gap: 14px;
     padding: 0;
     background: none;
 }
 
 .featured-post .feature-copy h2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
     margin: 0;
     font-size: 36px;
     line-height: 1.12;
@@ -1938,10 +1943,10 @@ h4 {
         aspect-ratio: 2 / 1;
     }
 
-    /* Data e "Ler o artigo" dividem a mesma linha */
+    /* Texto e data ocupam a largura do destaque no celular. */
     .featured-post .feature-copy {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr;
         align-items: center;
         column-gap: 16px;
     }
@@ -2724,6 +2729,35 @@ h4 {
     .ref-detalhe {
         padding-left: 8px;
     }
+}
+
+.home-signoff { padding: 0 0 32px; }
+
+/* Palavras sobrepostas mantêm a largura da frase estável durante a troca. */
+.intro-words {
+    display: inline-grid;
+    vertical-align: bottom;
+    overflow: hidden;
+    padding-bottom: .12em;
+    margin-bottom: -.12em;
+}
+.intro-word {
+    grid-area: 1 / 1;
+    opacity: 0;
+    animation: intro-word-cycle 18s cubic-bezier(.22, 1, .36, 1) infinite;
+}
+.intro[data-motion="paused"] .intro-word {
+    animation-play-state: paused;
+}
+@keyframes intro-word-cycle {
+    0%, 13% { opacity: 1; transform: translateY(0); }
+    16%, 98% { opacity: 0; transform: translateY(-65%); }
+    99% { opacity: 0; transform: translateY(65%); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .intro-word { animation: none; opacity: 0; transform: none; }
+    .intro-word:first-child { opacity: 1; }
 }
 
 
