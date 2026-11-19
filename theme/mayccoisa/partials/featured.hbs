@@ -1,6 +1,6 @@
 <section class="featured featured-post" aria-label="Leitura em destaque">
     {{#if feature_image}}
-    <a class="feature-photo duo" href="{{url}}" tabindex="-1" aria-hidden="true">
+    <a class="feature-photo duo" href="{{url}}" aria-label="{{title}}">
         <img
             src="{{img_url feature_image size="l"}}"
             srcset="{{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 960w, {{img_url feature_image size='xl'}} 1400w"
@@ -37,6 +37,5 @@
             {{date format="D MMM YYYY" locale="pt-BR"}} <span aria-hidden="true">·</span>
             {{reading_time minute="1 min de leitura" minutes="% min de leitura"}}
         </div>
-        <a class="read" href="{{url}}">Ler o artigo <span aria-hidden="true">↗</span></a>
     </div>
 </section>

@@ -2,8 +2,7 @@
 {{#is "home"}}
     {{#match pagination.page "=" 1}}
         <section class="wrap intro">
-            <h1>Tecnologia, vida real. E um pouco de <em>tudo mais.</em></h1>
-            <p class="intro-sign">Um blog para quem é curioso · Por Maycon Rocha</p>
+            <h1 aria-label="Da ideia ao produto. Hora de construir, testar e melhorar.">Da ideia ao produto. Hora de <em class="intro-words" aria-hidden="true"><span class="intro-word" style="animation-delay: 0s">construir.</span><span class="intro-word" style="animation-delay: -15s">testar.</span><span class="intro-word" style="animation-delay: -12s">analisar.</span><span class="intro-word" style="animation-delay: -9s">refinar.</span><span class="intro-word" style="animation-delay: -6s">melhorar.</span><span class="intro-word" style="animation-delay: -3s">idealizar.</span></em></h1>
         </section>
     {{/match}}
 {{/is}}
@@ -82,3 +81,11 @@
         </div>
     </div>
 {{/if}}
+
+{{#is "home"}}
+    {{#match pagination.page "=" 1}}
+        <div class="wrap home-signoff">
+            <p class="intro-sign">Um blog para quem é curioso · Por Maycon Rocha</p>
+        </div>
+    {{/match}}
+{{/is}}
