@@ -1,0 +1,20 @@
+{{#get "tags" limit="6" order="count.posts desc" include="count.posts" as |assuntos|}}
+    {{#if assuntos}}
+        <section class="side-section{{#if ../compact}} home-topics{{/if}}" id="assuntos">
+            <h2>{{#if @custom.topics_label}}{{@custom.topics_label}}{{else}}Explore por assunto{{/if}}</h2>
+            {{#foreach assuntos}}
+                <a class="subject" href="{{url}}">
+                    <span class="subject-name">{{> "icone-assunto" slug=slug}}{{name}}</span>
+                    <span class="subject-arrow" aria-hidden="true">↗</span>
+                </a>
+            {{/foreach}}
+        </section>
+    {{else}}
+        {{#if ../compact}}
+            <section class="side-section home-topics" id="assuntos">
+                <h2>{{#if @custom.topics_label}}{{@custom.topics_label}}{{else}}Explore por assunto{{/if}}</h2>
+                <p>Os assuntos aparecem aqui quando os primeiros artigos forem publicados.</p>
+            </section>
+        {{/if}}
+    {{/if}}
+{{/get}}

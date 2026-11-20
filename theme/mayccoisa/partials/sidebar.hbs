@@ -10,19 +10,7 @@
         </button>
     </div>
 
-    {{#get "tags" limit="6" order="count.posts desc" include="count.posts" as |assuntos|}}
-        {{#if assuntos}}
-            <section class="side-section" id="assuntos">
-                <h2>{{#if @custom.topics_label}}{{@custom.topics_label}}{{else}}Explore por assunto{{/if}}</h2>
-                {{#foreach assuntos}}
-                    <a class="subject" href="{{url}}">
-                        <span class="subject-name">{{> "icone-assunto" slug=slug}}{{name}}</span>
-                        <span class="subject-arrow" aria-hidden="true">↗</span>
-                    </a>
-                {{/foreach}}
-            </section>
-        {{/if}}
-    {{/get}}
+    {{> assuntos}}
 
     {{#get "posts" filter="featured:true" limit="3" order="published_at desc" as |leitura|}}
         {{#if leitura}}

@@ -1,14 +1,14 @@
 {{!< default}}
 {{#is "home"}}
     {{#match pagination.page "=" 1}}
-        <section class="wrap intro">
+        <section class="wrap intro intro-home">
             <h1 aria-label="Da ideia ao produto. Hora de construir, testar e melhorar.">Da ideia ao produto. Hora de <em class="intro-words" aria-hidden="true"><span class="intro-word" style="animation-delay: 0s">construir.</span><span class="intro-word" style="animation-delay: -15s">testar.</span><span class="intro-word" style="animation-delay: -12s">analisar.</span><span class="intro-word" style="animation-delay: -9s">refinar.</span><span class="intro-word" style="animation-delay: -6s">melhorar.</span><span class="intro-word" style="animation-delay: -3s">idealizar.</span></em></h1>
         </section>
     {{/match}}
 {{/is}}
 
 {{#if posts}}
-    <div class="wrap">
+    <div class="wrap home-content">
         {{#match pagination.total ">" 1}}
             {{#foreach posts}}
                 {{#if @first}}
@@ -34,14 +34,14 @@
             {{/match}}
         {{/is}}
 
-        <div class="editorial">
+        <div class="editorial editorial-home">
             <section class="feed" id="artigos">
                 <div class="section-head">
                     <h2>As últimas descobertas</h2>
                     <span class="section-count">{{plural pagination.total empty="Nenhum artigo" singular="% artigo" plural="% artigos"}}</span>
                 </div>
 
-                <div class="grid">
+                <div class="grid grid-home">
                     {{#match pagination.total ">" 1}}
                         {{#foreach posts}}
                             {{#unless @first}}
@@ -58,7 +58,7 @@
                 {{> pagination}}
             </section>
 
-            {{> sidebar}}
+            {{> assuntos compact=true}}
         </div>
     </div>
 
@@ -68,8 +68,8 @@
         <a href="#artigos">Encontre sua próxima leitura <span aria-hidden="true">↗</span></a>
     </section>
 {{else}}
-    <div class="wrap">
-        <div class="editorial">
+    <div class="wrap home-content">
+        <div class="editorial editorial-home">
             <section class="feed">
                 <section class="empty-state">
                     <span class="eyebrow">Ainda no rascunho</span>
@@ -77,7 +77,7 @@
                     <p>O primeiro artigo está a caminho. Enquanto isso, volte em breve ou acompanhe pelo <a href="{{@site.url}}/rss/">RSS</a>.</p>
                 </section>
             </section>
-            {{> sidebar}}
+            {{> assuntos compact=true}}
         </div>
     </div>
 {{/if}}

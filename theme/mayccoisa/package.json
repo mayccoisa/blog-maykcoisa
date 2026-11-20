@@ -1,7 +1,7 @@
 {
     "name": "mayccoisa",
     "description": "Tema do blog Mayccoisa — tecnologia, lifestyle e tudo mais",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "engines": {
         "ghost": ">=5.0.0",
         "node": ">=18.0.0"
