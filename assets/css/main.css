@@ -2760,4 +2760,115 @@ h4 {
     .intro-word:first-child { opacity: 1; }
 }
 
+/* Home: conteúdo em largura total e abertura compacta. */
+body.home-template .wrap {
+    max-width: 1000px;
+}
+
+.intro-home {
+    padding-block: 18px 20px;
+}
+
+.home-content > .featured-post {
+    gap: 24px 32px;
+    padding-bottom: 24px;
+}
+
+.home-content > .featured-post > .feature-art,
+.home-content > .featured-post > .feature-photo {
+    height: clamp(210px, 28vh, 260px);
+}
+
+.home-content > .featured-post .feature-copy {
+    gap: 12px;
+}
+
+.home-content > .featured-post .feature-copy h2 {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    font-size: clamp(28px, 2.5vw, 32px);
+}
+
+.home-content > .featured-post .feature-copy p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.editorial.editorial-home {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+}
+
+.grid.grid-home {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.home-topics {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+    margin-block: 0 32px;
+}
+
+.home-topics h2 {
+    flex-basis: 100%;
+    margin-block-end: 8px;
+}
+
+.home-topics .subject {
+    min-width: 0;
+    border: 0;
+}
+
+.home-topics p {
+    margin: 0;
+    color: var(--muted);
+}
+
+@media (max-width: 900px) {
+    .grid.grid-home {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .nav-area .nav-search {
+        display: inline-flex;
+        flex-shrink: 0;
+        margin-block-start: 8px;
+    }
+}
+
+@media (max-width: 620px) {
+    .grid.grid-home {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-content > .featured-post {
+        gap: 16px;
+        padding-bottom: 20px;
+    }
+
+    .home-content > .featured-post > .feature-art,
+    .home-content > .featured-post > .feature-photo {
+        flex-basis: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 2 / 1;
+    }
+
+    .home-content > .featured-post .feature-copy {
+        flex-basis: 100%;
+        min-width: 0;
+        gap: 8px;
+    }
+
+    .home-content > .featured-post .feature-copy h2 {
+        font-size: 24px;
+    }
+}
+
 

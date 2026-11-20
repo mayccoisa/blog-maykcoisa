@@ -100,7 +100,7 @@
                     <path d="M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm-9 7a9 9 0 1 1 18 0 9 9 0 0 1-18 0Z" fill="currentColor"/>
                 </svg>
                 <label class="busca-rotulo" for="busca-termo">Buscar artigos e projetos</label>
-                <input id="busca-termo" type="search" placeholder="Buscar artigos e projetos" autocomplete="off" />
+                <input id="busca-termo" type="search" placeholder="Kcoisa você quer procurar?" autocomplete="off" />
                 <button type="button" class="busca-fechar" aria-label="Fechar a busca">Esc</button>
             </div>
             <div class="busca-filtros" role="group" aria-label="Filtrar resultados">
@@ -177,10 +177,11 @@
 
     gatilhos.forEach((botao) => botao.addEventListener('click', abrir));
     campo.addEventListener('input', mostrar);
-    // No campo de busca o Esc só limparia o texto; aqui ele fecha a janela
-    campo.addEventListener('keydown', (evento) => {
+    // O Esc fecha a busca sem acionar atalhos da página ou limpar o campo.
+    janela.addEventListener('keydown', (evento) => {
         if (evento.key === 'Escape') {
             evento.preventDefault();
+            evento.stopPropagation();
             janela.close();
         }
     });

@@ -1,0 +1,22 @@
+{
+  "versao": "1.1.0",
+  "data": "2026-11-20",
+  "sourceCommit": "fcf73425438d52fa251ae0668f68ce2b94826428",
+  "assets": [
+    {
+      "arquivo": "assets/images/projetos/savevault-v1.webp",
+      "bytes": 87636,
+      "sha256": "37a3139a70680e5f8d06348ba01893a3c5a2754b0ba8374d487fe76ce77f4eb4"
+    },
+    {
+      "arquivo": "assets/images/projetos/palworld-card-game-v1.webp",
+      "bytes": 166572,
+      "sha256": "04ce9f66bd82fa91d452637b1f01ab39d8c408374514ba9ef929a37094a7b699"
+    },
+    {
+      "arquivo": "assets/images/projetos/content-studio-v1.webp",
+      "bytes": 86744,
+      "sha256": "a7aebd86626e869fe47b2fc24e41d5fc50e1515df8a934e6e361d175f60df232"
+    }
+  ]
+}
